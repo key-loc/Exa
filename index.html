@@ -6,12 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="WasteToRaw - AI Sustainability Marketplace for Commercial Waste">
     <title>WasteToRaw | AI Sustainability Marketplace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
         tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
     </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .nav-link {
+                @apply text-sm font-medium hover:text-emerald-600 transition;
+            }
+            .btn-emerald {
+                @apply bg-emerald-600 hover:bg-emerald-700 text-white transition font-semibold;
+            }
+            .card-feature {
+                @apply bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition duration-300;
+            }
+            .card-title {
+                @apply font-bold text-slate-900 mb-1;
+            }
+            .card-desc {
+                @apply text-slate-600 text-sm leading-relaxed;
+            }
+            .step-item {
+                @apply flex flex-col items-center text-center;
+            }
+            .step-circle {
+                @apply w-12 h-12 rounded-full bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mb-4 shadow;
+            }
+            .step-title {
+                @apply font-bold text-slate-900 mb-1;
+            }
+            .step-desc {
+                @apply text-slate-600 text-xs;
+            }
+            .card-product {
+                @apply bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition duration-300 flex flex-col justify-between;
+            }
+            .badge-tag {
+                @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-3;
+            }
+        }
+    </style>
 </head>
 
 <body class="font-sans antialiased bg-slate-50 text-slate-800 flex flex-col min-h-screen">
@@ -19,17 +55,14 @@
     <!-- Header & Nav -->
     <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 relative">
-            <a href="#" class="font-extrabold text-xl tracking-tight">WasteTo<span
-                    class="text-emerald-600">Raw</span></a>
+            <a href="#" class="font-extrabold text-xl tracking-tight">WasteTo<span class="text-emerald-600">Raw</span></a>
 
             <!-- Desktop Nav -->
             <nav class="hidden md:flex space-x-6 items-center">
-                <a href="#features" class="text-sm font-medium hover:text-emerald-600 transition">Features</a>
-                <a href="#how" class="text-sm font-medium hover:text-emerald-600 transition">How It Works</a>
-                <a href="#market" class="text-sm font-medium hover:text-emerald-600 transition">Marketplace</a>
-                <a href="#"
-                    class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Launch
-                    App</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how" class="nav-link">How It Works</a>
+                <a href="#market" class="nav-link">Marketplace</a>
+                <a href="#" class="btn-emerald px-4 py-2 rounded-lg text-sm">Launch App</a>
             </nav>
 
             <!-- CSS-only Mobile Toggle (Checkbox Hack) -->
@@ -43,14 +76,11 @@
             </label>
 
             <!-- Mobile Drawer (opens/closes dynamically based on checkbox state) -->
-            <div
-                class="hidden peer-checked:flex md:hidden flex-col absolute top-16 left-0 right-0 bg-white border-b border-slate-100 px-4 py-4 space-y-3 shadow-md z-40">
-                <a href="#features" class="text-sm font-medium hover:text-emerald-600 transition">Features</a>
-                <a href="#how" class="text-sm font-medium hover:text-emerald-600 transition">How It Works</a>
-                <a href="#market" class="text-sm font-medium hover:text-emerald-600 transition">Marketplace</a>
-                <a href="#"
-                    class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition text-center">Launch
-                    App</a>
+            <div class="hidden peer-checked:flex md:hidden flex-col absolute top-16 left-0 right-0 bg-white border-b border-slate-100 px-4 py-4 space-y-3 shadow-md z-40">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how" class="nav-link">How It Works</a>
+                <a href="#market" class="nav-link">Marketplace</a>
+                <a href="#" class="btn-emerald px-4 py-2 rounded-lg text-sm text-center">Launch App</a>
             </div>
         </div>
     </header>
@@ -59,58 +89,41 @@
         <!-- Hero Section -->
         <section class="relative py-20 overflow-hidden bg-slate-50">
             <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-                <span
-                    class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold mb-4">AI-Powered
-                    Circular Economy</span>
+                <span class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold mb-4">AI-Powered Circular Economy</span>
                 <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
-                    Turn Commercial Waste Into <span class="text-emerald-600 block sm:inline">Premium Raw
-                        Materials</span>
+                    Turn Commercial Waste Into <span class="text-emerald-600 block sm:inline">Premium Raw Materials</span>
                 </h1>
                 <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-                    An AI marketplace connecting businesses to trade and recycle industrial byproducts—reducing costs
-                    and landfill waste.
+                    An AI marketplace connecting businesses to trade and recycle industrial byproducts—reducing costs and landfill waste.
                 </p>
-                <a href="#market"
-                    class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3.5 rounded-lg font-bold text-base transition shadow-md hover:shadow-lg inline-block">
-                    Explore Marketplace
-                </a>
+                <a href="#market" class="btn-emerald px-8 py-3.5 rounded-lg font-bold text-base shadow-md hover:shadow-lg inline-block">Explore Marketplace</a>
             </div>
-            <div
-                class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0,transparent_60%)] pointer-events-none">
-            </div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0,transparent_60%)] pointer-events-none"></div>
         </section>
 
         <!-- Features Section -->
         <section id="features" class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div
-                        class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition duration-300">
+                    <div class="card-feature">
                         <span class="text-3xl mb-4 block">📸</span>
-                        <h3 class="font-bold text-slate-900 mb-1">AI Classification</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Computer vision categorizes waste via simple
-                            photos.</p>
+                        <h3 class="card-title">AI Classification</h3>
+                        <p class="card-desc">Computer vision categorizes waste via simple photos.</p>
                     </div>
-                    <div
-                        class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition duration-300">
+                    <div class="card-feature">
                         <span class="text-3xl mb-4 block">🔗</span>
-                        <h3 class="font-bold text-slate-900 mb-1">Symbiosis Match</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Machine learning maps cross-industry links
-                            instantly.</p>
+                        <h3 class="card-title">Symbiosis Match</h3>
+                        <p class="card-desc">Machine learning maps cross-industry links instantly.</p>
                     </div>
-                    <div
-                        class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition duration-300">
+                    <div class="card-feature">
                         <span class="text-3xl mb-4 block">📍</span>
-                        <h3 class="font-bold text-slate-900 mb-1">Geofenced Maps</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Proximity filtering keeps hauling distances
-                            low.</p>
+                        <h3 class="card-title">Geofenced Maps</h3>
+                        <p class="card-desc">Proximity filtering keeps hauling distances low.</p>
                     </div>
-                    <div
-                        class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition duration-300">
+                    <div class="card-feature">
                         <span class="text-3xl mb-4 block">📊</span>
-                        <h3 class="font-bold text-slate-900 mb-1">ESG Dashboards</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Track carbon offsets and waste diversion
-                            metrics.</p>
+                        <h3 class="card-title">ESG Dashboards</h3>
+                        <p class="card-desc">Track carbon offsets and waste diversion metrics.</p>
                     </div>
                 </div>
             </div>
@@ -121,33 +134,25 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 text-center mb-12">How It Works</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="flex flex-col items-center text-center">
-                        <div
-                            class="w-12 h-12 rounded-full bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mb-4 shadow">
-                            1</div>
-                        <h3 class="font-bold text-slate-900 mb-1">Snap & List</h3>
-                        <p class="text-slate-600 text-xs">Upload images of surplus byproducts.</p>
+                    <div class="step-item">
+                        <div class="step-circle">1</div>
+                        <h3 class="step-title">Snap & List</h3>
+                        <p class="step-desc">Upload images of surplus byproducts.</p>
                     </div>
-                    <div class="flex flex-col items-center text-center">
-                        <div
-                            class="w-12 h-12 rounded-full bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mb-4 shadow">
-                            2</div>
-                        <h3 class="font-bold text-slate-900 mb-1">AI Match</h3>
-                        <p class="text-slate-600 text-xs">Auto-pair materials with local factories.</p>
+                    <div class="step-item">
+                        <div class="step-circle">2</div>
+                        <h3 class="step-title">AI Match</h3>
+                        <p class="step-desc">Auto-pair materials with local factories.</p>
                     </div>
-                    <div class="flex flex-col items-center text-center">
-                        <div
-                            class="w-12 h-12 rounded-full bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mb-4 shadow">
-                            3</div>
-                        <h3 class="font-bold text-slate-900 mb-1">Secure Exchange</h3>
-                        <p class="text-slate-600 text-xs">Arrange geofenced logistics and pickup.</p>
+                    <div class="step-item">
+                        <div class="step-circle">3</div>
+                        <h3 class="step-title">Secure Exchange</h3>
+                        <p class="step-desc">Arrange geofenced logistics and pickup.</p>
                     </div>
-                    <div class="flex flex-col items-center text-center">
-                        <div
-                            class="w-12 h-12 rounded-full bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mb-4 shadow">
-                            4</div>
-                        <h3 class="font-bold text-slate-900 mb-1">Claim ESG</h3>
-                        <p class="text-slate-600 text-xs">Download compliance & offset certificates.</p>
+                    <div class="step-item">
+                        <div class="step-circle">4</div>
+                        <h3 class="step-title">Claim ESG</h3>
+                        <p class="step-desc">Download compliance & offset certificates.</p>
                     </div>
                 </div>
             </div>
@@ -156,15 +161,12 @@
         <!-- Marketplace Section -->
         <section id="market" class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-10 border-b pb-4">Live Marketplace Feed
-                </h2>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-10 border-b pb-4">Live Marketplace Feed</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Product 1 -->
-                    <div
-                        class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div class="card-product">
                         <div class="p-6">
-                            <span
-                                class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-3">Organic</span>
+                            <span class="badge-tag">Organic</span>
                             <h3 class="font-bold text-lg text-slate-900 mb-3">Spent Coffee Grounds</h3>
                             <div class="text-sm text-slate-600 space-y-1">
                                 <div><strong>Qty:</strong> 500 lbs</div>
@@ -173,16 +175,13 @@
                         </div>
                         <div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
                             <span class="font-extrabold text-slate-900 text-sm">Free / Pickup</span>
-                            <a href="#"
-                                class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition text-center">Claim</a>
+                            <a href="#" class="btn-emerald px-3 py-1.5 rounded-lg text-xs text-center">Claim</a>
                         </div>
                     </div>
                     <!-- Product 2 -->
-                    <div
-                        class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div class="card-product">
                         <div class="p-6">
-                            <span
-                                class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-3">Textiles</span>
+                            <span class="badge-tag">Textiles</span>
                             <h3 class="font-bold text-lg text-slate-900 mb-3">Denim Scraps</h3>
                             <div class="text-sm text-slate-600 space-y-1">
                                 <div><strong>Qty:</strong> 1.2 Tons</div>
@@ -191,16 +190,13 @@
                         </div>
                         <div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
                             <span class="font-extrabold text-slate-900 text-sm">$50 / Ton</span>
-                            <a href="#"
-                                class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition text-center">Claim</a>
+                            <a href="#" class="btn-emerald px-3 py-1.5 rounded-lg text-xs text-center">Claim</a>
                         </div>
                     </div>
                     <!-- Product 3 -->
-                    <div
-                        class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition duration-300 flex flex-col justify-between">
+                    <div class="card-product">
                         <div class="p-6">
-                            <span
-                                class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-3">Wood</span>
+                            <span class="badge-tag">Wood</span>
                             <h3 class="font-bold text-lg text-slate-900 mb-3">Untreated Pallet Wood</h3>
                             <div class="text-sm text-slate-600 space-y-1">
                                 <div><strong>Qty:</strong> 300 Pallets</div>
@@ -209,8 +205,7 @@
                         </div>
                         <div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
                             <span class="font-extrabold text-slate-900 text-sm">$2 / Unit</span>
-                            <a href="#"
-                                class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition text-center">Claim</a>
+                            <a href="#" class="btn-emerald px-3 py-1.5 rounded-lg text-xs text-center">Claim</a>
                         </div>
                     </div>
                 </div>
@@ -222,9 +217,7 @@
             <div class="max-w-3xl mx-auto px-4">
                 <article class="prose prose-slate prose-emerald mx-auto text-center">
                     <h2>Committed to the Circular Economy</h2>
-                    <p>At WasteToRaw, we believe that industrial waste is just a resource in the wrong place. By
-                        leveraging machine learning, we streamline matches to create sustainable closed-loop industrial
-                        ecosystems.</p>
+                    <p>At WasteToRaw, we believe that industrial waste is just a resource in the wrong place. By leveraging machine learning, we streamline matches to create sustainable closed-loop industrial ecosystems.</p>
                 </article>
             </div>
         </section>
