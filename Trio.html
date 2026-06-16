@@ -1,105 +1,644 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="WasteToRaw - AI Sustainability Marketplace for Commercial Waste"><title>WasteToRaw | AI Sustainability Marketplace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WasteToRaw - AI Sustainability Marketplace for Commercial Waste">
+    <title>WasteToRaw | AI Sustainability Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
     <style>
-        .nav-link { font-size: 0.875rem; font-weight: 500; transition: all 0.2s ease-in-out; }
-        .nav-link:hover { color: #059669; }
-        .btn-emerald { background-color: #059669; color: #ffffff; transition: all 0.2s ease-in-out; font-weight: 600; }
-        .btn-emerald:hover { background-color: #047857; }
-        .card-feature { background-color: #f8fafc; padding: 1.5rem; border-radius: 1rem; border: 1px solid #f1f5f9; transition: all 0.3s ease-in-out; }
-        .card-feature:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); transform: translateY(-0.25rem); }
-        .card-title { font-weight: 700; color: #0f172a; margin-bottom: 0.25rem; }
-        .card-desc { color: #475569; font-size: 0.875rem; line-height: 1.625; }
-        .step-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .step-circle { width: 3rem; height: 3rem; border-radius: 9999px; background-color: #059669; color: #ffffff; font-weight: 700; font-size: 1.125rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1); }
-        .step-title { font-weight: 700; color: #0f172a; margin-bottom: 0.25rem; }
-        .step-desc { color: #475569; font-size: 0.75rem; }
-        .card-product { background-color: #f8fafc; border-radius: 1rem; border: 1px solid #e2e8f0; overflow: hidden; transition: all 0.3s ease-in-out; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-product:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
-        .badge-tag { display: inline-block; padding: 0.125rem 0.625rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #d1fae5; color: #065f46; margin-bottom: 0.75rem; }
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: #059669;
+        }
+
+        .btn-emerald {
+            background-color: #059669;
+            color: #ffffff;
+            transition: all 0.2s ease-in-out;
+            font-weight: 600;
+        }
+
+        .btn-emerald:hover {
+            background-color: #047857;
+        }
+
+        .card-feature {
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card-feature:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            transform: translateY(-0.25rem);
+        }
+
+        .card-title {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-desc {
+            color: #475569;
+            font-size: 0.875rem;
+            line-height: 1.625;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .step-circle {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background-color: #059669;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-desc {
+            color: #475569;
+            font-size: 0.75rem;
+        }
+
+        .card-product {
+            background-color: #f8fafc;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-product:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge-tag {
+            display: inline-block;
+            padding: 0.125rem 0.625rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background-color: #d1fae5;
+            color: #065f46;
+            margin-bottom: 0.75rem;
+        }
     </style>
 </head>
+
 <body class="font-sans antialiased bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-    <!-- Header & Nav -->
     <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 relative">
-            <a href="#" class="font-extrabold text-xl tracking-tight">WasteTo<span class="text-emerald-600">Raw</span></a>
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex space-x-6 items-center"><a href="#features" class="nav-link">Features</a><a href="#how" class="nav-link">How It Works</a><a href="#market" class="nav-link">Marketplace</a><a href="#" class="btn-emerald px-4 py-2 rounded-lg text-sm">Launch App</a></nav>
-            <!-- CSS-only Mobile Toggle (Checkbox Hack) -->
+            <a href="#" class="font-extrabold text-xl tracking-tight">WasteTo<span
+                    class="text-emerald-600">Raw</span></a>
+            <nav class="hidden md:flex space-x-6 items-center"><a href="#features" class="nav-link">Features</a><a
+                    href="#how" class="nav-link">How It Works</a><a href="#demo-console"
+                    class="nav-link text-emerald-600 font-bold">App Console</a><a href="#market"
+                    class="nav-link">Marketplace</a><a href="#demo-console"
+                    class="btn-emerald px-4 py-2 rounded-lg text-sm">Launch App</a></nav>
             <input type="checkbox" id="menu-toggle" class="hidden peer" />
-            <!-- Hamburger Icon (linked to checkbox) -->
-            <label for="menu-toggle" class="md:hidden p-2 text-slate-600 cursor-pointer select-none"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></label>
-            <!-- Mobile Drawer (opens/closes dynamically based on checkbox state) -->
-            <div class="hidden peer-checked:flex md:hidden flex-col absolute top-16 left-0 right-0 bg-white border-b border-slate-100 px-4 py-4 space-y-3 shadow-md z-40"><a href="#features" class="nav-link">Features</a><a href="#how" class="nav-link">How It Works</a><a href="#market" class="nav-link">Marketplace</a><a href="#" class="btn-emerald px-4 py-2 rounded-lg text-sm text-center">Launch App</a></div>
+            <label for="menu-toggle" class="md:hidden p-2 text-slate-600 cursor-pointer select-none"><svg
+                    class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg></label>
+            <div
+                class="hidden peer-checked:flex md:hidden flex-col absolute top-16 left-0 right-0 bg-white border-b border-slate-100 px-4 py-4 space-y-3 shadow-md z-40">
+                <a href="#features" class="nav-link">Features</a><a href="#how" class="nav-link">How It Works</a><a
+                    href="#demo-console" class="nav-link text-emerald-600 font-bold">App Console</a><a href="#market"
+                    class="nav-link">Marketplace</a><a href="#"
+                    class="btn-emerald px-4 py-2 rounded-lg text-sm text-center">Launch App</a>
+            </div>
         </div>
     </header>
 
     <main class="flex-grow">
-        <!-- Hero Section -->
         <section class="relative py-20 overflow-hidden bg-slate-50">
             <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-                <span class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold mb-4">AI-Powered Circular Economy</span>
-                <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">Turn Commercial Waste Into <span class="text-emerald-600 block sm:inline">Premium Raw Materials</span></h1>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">An AI marketplace connecting businesses to trade and recycle industrial byproducts—reducing costs and landfill waste.</p>
-                <a href="#market" class="btn-emerald px-8 py-3.5 rounded-lg font-bold text-base shadow-md hover:shadow-lg inline-block">Explore Marketplace</a>
+                <span
+                    class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold mb-4">AI-Powered
+                    Circular Economy</span>
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">Turn Commercial Waste
+                    Into <span class="text-emerald-600 block sm:inline">Premium Raw Materials</span></h1>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">An AI marketplace connecting businesses to
+                    trade and recycle industrial byproducts—reducing costs and landfill waste.</p>
+                <div class="space-x-4">
+                    <a href="#market"
+                        class="btn-emerald px-8 py-3.5 rounded-lg font-bold text-base shadow-md hover:shadow-lg inline-block">Explore
+                        Marketplace</a>
+                </div>
             </div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0,transparent_60%)] pointer-events-none"></div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0,transparent_60%)] pointer-events-none">
+            </div>
         </section>
 
-        <!-- Features Section -->
-        <section id="features" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="card-feature"><span class="text-3xl mb-4 block">📸</span><h3 class="card-title">AI Classification</h3><p class="card-desc">Computer vision categorizes waste via simple photos.</p></div>
-                    <div class="card-feature"><span class="text-3xl mb-4 block">🔗</span><h3 class="card-title">Symbiosis Match</h3><p class="card-desc">Machine learning maps cross-industry links instantly.</p></div>
-                    <div class="card-feature"><span class="text-3xl mb-4 block">📍</span><h3 class="card-title">Geofenced Maps</h3><p class="card-desc">Proximity filtering keeps hauling distances low.</p></div>
-                    <div class="card-feature"><span class="text-3xl mb-4 block">📊</span><h3 class="card-title">ESG Dashboards</h3><p class="card-desc">Track carbon offsets and waste diversion metrics.</p></div>
+        <section id="demo-console" class="py-16 bg-slate-900 text-slate-100 border-b border-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Nearby Locations Modal -->
+                <div id="nearbyModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4"
+                    role="dialog" aria-modal="true">
+                    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeNearbyModal()"></div>
+                    <div
+                        class="relative bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl w-full max-w-md p-6 space-y-4 animate-[fadeIn_0.2s_ease]">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-white font-bold text-lg">📍 Nearby Locations</h3>
+                                <p id="modalCoords" class="text-emerald-400 text-xs font-mono mt-0.5">Fetching
+                                    coordinates...</p>
+                            </div>
+                            <button onclick="closeNearbyModal()"
+                                class="text-slate-500 hover:text-white transition-colors text-xl leading-none">&times;</button>
+                        </div>
+                        <div id="nearbyList" class="space-y-3"></div>
+                        <button onclick="closeNearbyModal()"
+                            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-sm font-bold transition-all">Close</button>
+                    </div>
+                </div>
+
+                <!-- Hidden inputs for background storage (not shown to user) -->
+                <input type="text" id="draftInput" class="hidden" value="">
+                <select id="sessionFilter" class="hidden">
+                    <option value="All Materials">All Materials</option>
+                    <option value="Organic High Bio-mass">Organic High Bio-mass</option>
+                    <option value="Commercial Polymers">Commercial Polymers</option>
+                    <option value="Industrial Raw Timber">Industrial Raw Timber</option>
+                </select>
+
+                <div class="flex justify-center mt-2 mb-8">
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 w-full max-w-sm flex flex-col gap-2">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center">📍 Places Near Me!</p>
+                        <button id="geoBtn" onclick="fetchGeographicBounds()"
+                            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl font-bold text-sm shadow-md transition-all transform active:scale-[0.99] flex items-center justify-center gap-2">
+                            <svg id="geoIcon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span id="geoText">Find Locations</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Word from Our Users — Video API Testimonial -->
+                <div class="mt-10">
+                    <div class="text-center mb-6">
+                        <span class="text-emerald-400 text-xs font-bold tracking-widest uppercase">From Our
+                            Community</span>
+                        <h3 class="text-xl font-black text-white mt-1">A Word From Our Users</h3>
+                        <p class="text-slate-500 text-xs mt-1 max-w-md mx-auto">See how WasteToRaw is transforming
+                            industrial operations across sectors.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div
+                                class="bg-slate-800 rounded-2xl border border-slate-700/60 p-5 flex flex-col justify-between">
+                                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">"Finally a platform that
+                                    treats industrial byproduct as an asset, not a liability. Our coffee grounds now go
+                                    directly to local biogas producers."</p>
+                                <div class="flex items-center gap-2 pt-3 border-t border-slate-700">
+                                    <div
+                                        class="w-7 h-7 rounded-full bg-teal-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                                        ML</div>
+                                    <div>
+                                        <p class="text-white text-xs font-semibold">Maria L.</p>
+                                        <p class="text-slate-500 text-[10px]">Head of Sustainability, BrewCo</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-slate-800 rounded-2xl border border-slate-700/60 p-5 flex flex-col justify-between">
+                                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">"The geofenced matching is
+                                    a game changer. We matched with a facility 2 miles away for our denim scraps — same
+                                    day pickup."</p>
+                                <div class="flex items-center gap-2 pt-3 border-t border-slate-700">
+                                    <div
+                                        class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                                        JT</div>
+                                    <div>
+                                        <p class="text-white text-xs font-semibold">James T.</p>
+                                        <p class="text-slate-500 text-[10px]">Logistics Manager, DenimWorks</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-slate-800 rounded-2xl border border-slate-700/60 p-5 flex flex-col justify-between">
+                                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">"ESG reporting used to
+                                    take a week. Now I pull a compliance certificate in 30 seconds. This is the future
+                                    of circular supply chains."</p>
+                                <div class="flex items-center gap-2 pt-3 border-t border-slate-700">
+                                    <div
+                                        class="w-7 h-7 rounded-full bg-violet-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                                        AP</div>
+                                    <div>
+                                        <p class="text-white text-xs font-semibold">Anya P.</p>
+                                        <p class="text-slate-500 text-[10px]">ESG Director, GreenPack Industries</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-slate-800 rounded-2xl border border-slate-700/60 p-5 flex flex-col justify-between">
+                                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">"We listed 300 untreated
+                                    pallets on a Friday. By Monday they were claimed and hauled. Zero landfill. Zero
+                                    cost. Pure circular economy."</p>
+                                <div class="flex items-center gap-2 pt-3 border-t border-slate-700">
+                                    <div
+                                        class="w-7 h-7 rounded-full bg-amber-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                                        DS</div>
+                                    <div>
+                                        <p class="text-white text-xs font-semibold">Derek S.</p>
+                                        <p class="text-slate-500 text-[10px]">Yard Supervisor, TimberFirst</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- How It Works Section -->
+        <section id="features" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card-feature"><span class="text-3xl mb-4 block">📸</span>
+                        <h3 class="card-title">AI Classification</h3>
+                        <p class="card-desc">Computer vision categorizes waste via simple photos.</p>
+                    </div>
+                    <div class="card-feature"><span class="text-3xl mb-4 block">🔗</span>
+                        <h3 class="card-title">Symbiosis Match</h3>
+                        <p class="card-desc">Machine learning maps cross-industry links instantly.</p>
+                    </div>
+                    <div class="card-feature"><span class="text-3xl mb-4 block">📍</span>
+                        <h3 class="card-title">Geofenced Maps</h3>
+                        <p class="card-desc">Proximity filtering keeps hauling distances low.</p>
+                    </div>
+                    <div class="card-feature"><span class="text-3xl mb-4 block">📊</span>
+                        <h3 class="card-title">ESG Dashboards</h3>
+                        <p class="card-desc">Track carbon offsets and waste diversion metrics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="how" class="py-20 bg-slate-50 border-y border-slate-200/60">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 text-center mb-12">How It Works</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="step-item"><div class="step-circle">1</div><h3 class="step-title">Snap & List</h3><p class="step-desc">Upload images of surplus byproducts.</p></div>
-                    <div class="step-item"><div class="step-circle">2</div><h3 class="step-title">AI Match</h3><p class="step-desc">Auto-pair materials with local factories.</p></div>
-                    <div class="step-item"><div class="step-circle">3</div><h3 class="step-title">Secure Exchange</h3><p class="step-desc">Arrange geofenced logistics and pickup.</p></div>
-                    <div class="step-item"><div class="step-circle">4</div><h3 class="step-title">Claim ESG</h3><p class="step-desc">Download compliance & offset certificates.</p></div>
+                    <div class="step-item">
+                        <div class="step-circle">1</div>
+                        <h3 class="step-title">Snap & List</h3>
+                        <p class="step-desc">Upload images of surplus byproducts.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-circle">2</div>
+                        <h3 class="step-title">AI Match</h3>
+                        <p class="step-desc">Auto-pair materials with local factories.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-circle">3</div>
+                        <h3 class="step-title">Secure Exchange</h3>
+                        <p class="step-desc">Arrange geofenced logistics and pickup.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-circle">4</div>
+                        <h3 class="step-title">Claim ESG</h3>
+                        <p class="step-desc">Download compliance & offset certificates.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Marketplace Section -->
         <section id="market" class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-10 border-b pb-4">Live Marketplace Feed</h2>
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b pb-4 gap-4">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Live Marketplace Feed</h2>
+                </div>
+                
+                <!-- File API Insert (Add Product) -->
+                <div class="mb-10 bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm max-w-xl">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4">Add Product</h3>
+                    <label for="fileUpload"
+                        class="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-xl p-6 cursor-pointer transition-all group bg-white hover:bg-emerald-50">
+                        <svg class="w-8 h-8 text-slate-400 group-hover:text-emerald-500 transition-colors"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <p class="text-sm font-semibold text-slate-500 group-hover:text-emerald-600 transition-colors">
+                            Upload manifest or image</p>
+                        <input type="file" id="fileUpload" class="hidden">
+                    </label>
+                    <div id="filePreviewArea"
+                        class="hidden mt-3 bg-white border border-slate-200 rounded-xl px-4 py-3 items-center gap-3">
+                        <div class="flex-grow min-w-0">
+                            <p id="fileName" class="text-sm font-semibold text-slate-800 truncate"></p>
+                            <p id="fileMeta" class="text-xs text-slate-500"></p>
+                        </div>
+                        <span id="fileStatus" class="text-xs font-bold text-emerald-600 flex-shrink-0">Ready</span>
+                    </div>
+                    <button onclick="processFileObject()"
+                        class="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl font-bold text-sm tracking-wide shadow-md transition-all transform active:scale-[0.99]">Submit Product</button>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Product 1 -->
-                    <div class="card-product"><div class="p-6"><span class="badge-tag">Organic</span><h3 class="font-bold text-lg text-slate-900 mb-3">Spent Coffee Grounds</h3><div class="text-sm text-slate-600 space-y-1"><div><strong>Qty:</strong> 500 lbs</div><div><strong>Loc:</strong> Portland, OR (3.2 mi)</div></div></div><div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between"><span class="font-extrabold text-slate-900 text-sm">Free / Pickup</span><a href="#" class="btn-emerald px-3 py-1.5 rounded-lg text-xs text-center">Claim</a></div></div>
-                    <!-- Product 2 -->
-                    <div class="card-product"><div class="p-6"><span class="badge-tag">Textiles</span><h3 class="font-bold text-lg text-slate-900 mb-3">Denim Scraps</h3><div class="text-sm text-slate-600 space-y-1"><div><strong>Qty:</strong> 1.2 Tons</div><div><strong>Loc:</strong> Seattle, WA (12.4 mi)</div></div></div><div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between"><span class="font-extrabold text-slate-900 text-sm">$50 / Ton</span><a href="#" class="btn-emerald px-3 py-1.5 rounded-lg text-xs text-center">Claim</a></div></div>
-                    <!-- Product 3 -->
-                    <div class="card-product"><div class="p-6"><span class="badge-tag">Wood</span><h3 class="font-bold text-lg text-slate-900 mb-3">Untreated Pallet Wood</h3><div class="text-sm text-slate-600 space-y-1"><div><strong>Qty:</strong> 300 Pallets</div><div><strong>Loc:</strong> Beaverton, OR (8.1 mi)</div></div></div><div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between"><span class="font-extrabold text-slate-900 text-sm">$2 / Unit</span><a href="#" class="btn-emerald px-3 py-1.5 rounded-lg text-xs text-center">Claim</a></div></div>
+                    <div class="card-product">
+                        <div class="p-6">
+                            <span class="badge-tag">Organic</span>
+                            <h3 id="title-item-1" class="font-bold text-lg text-slate-900 mb-3">Spent Coffee Grounds
+                            </h3>
+                            <div class="text-sm text-slate-600 space-y-1">
+                                <div><strong>Qty:</strong> 500 lbs</div>
+                                <div id="loc-item-1"><strong>Loc:</strong> Portland, OR (3.2 mi)</div>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
+                            <span class="font-extrabold text-slate-900 text-sm">Free / Pickup</span>
+                            <div class="flex gap-1.5">
+                                <button onclick="copySharePayload('title-item-1')"
+                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 p-2 rounded-lg text-xs font-medium transition-colors"
+                                    title="Copy Resource ID Link">📋 Link</button>
+                                <button onclick="executeSecureClaim('Spent Coffee Grounds')"
+                                    class="btn-emerald px-4 py-1.5 rounded-lg text-xs text-center font-bold">Claim</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-product">
+                        <div class="p-6">
+                            <span class="badge-tag">Textiles</span>
+                            <h3 id="title-item-2" class="font-bold text-lg text-slate-900 mb-3">Denim Scraps</h3>
+                            <div class="text-sm text-slate-600 space-y-1">
+                                <div><strong>Qty:</strong> 1.2 Tons</div>
+                                <div id="loc-item-2"><strong>Loc:</strong> Seattle, WA (12.4 mi)</div>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
+                            <span class="font-extrabold text-slate-900 text-sm">$50 / Ton</span>
+                            <div class="flex gap-1.5">
+                                <button onclick="copySharePayload('title-item-2')"
+                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 p-2 rounded-lg text-xs font-medium transition-colors"
+                                    title="Copy Resource ID Link">📋 Link</button>
+                                <button onclick="executeSecureClaim('Denim Scraps')"
+                                    class="btn-emerald px-4 py-1.5 rounded-lg text-xs text-center font-bold">Claim</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-product">
+                        <div class="p-6">
+                            <span class="badge-tag">Wood</span>
+                            <h3 id="title-item-3" class="font-bold text-lg text-slate-900 mb-3">Untreated Pallet Wood
+                            </h3>
+                            <div class="text-sm text-slate-600 space-y-1">
+                                <div><strong>Qty:</strong> 300 Pallets</div>
+                                <div id="loc-item-3"><strong>Loc:</strong> Beaverton, OR (8.1 mi)</div>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
+                            <span class="font-extrabold text-slate-900 text-sm">$2 / Unit</span>
+                            <div class="flex gap-1.5">
+                                <button onclick="copySharePayload('title-item-3')"
+                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 p-2 rounded-lg text-xs font-medium transition-colors"
+                                    title="Copy Resource ID Link">📋 Link</button>
+                                <button onclick="executeSecureClaim('Untreated Pallet Wood')"
+                                    class="btn-emerald px-4 py-1.5 rounded-lg text-xs text-center font-bold">Claim</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Typography Section -->
         <section class="py-16 bg-slate-50 border-t border-slate-100">
-            <div class="max-w-3xl mx-auto px-4"><article class="prose prose-slate prose-emerald mx-auto text-center"><h2>Committed to the Circular Economy</h2><p>At WasteToRaw, we believe that industrial waste is just a resource in the wrong place. By leveraging machine learning, we streamline matches to create sustainable closed-loop industrial ecosystems.</p></article></div>
+            <div class="max-w-3xl mx-auto px-4">
+                <article class="prose prose-slate prose-emerald mx-auto text-center">
+                    <h2>Committed to the Circular Economy</h2>
+                    <p>At WasteToRaw, we believe that industrial waste is just a resource in the wrong place. By
+                        leveraging machine learning, we streamline matches to create sustainable closed-loop industrial
+                        ecosystems.</p>
+                </article>
+            </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-sm"><p>© 2026 WasteToRaw Platform. Built as a Smart City Sustainability Prototype.</p></footer>
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-sm">
+        <p>© 2026 WasteToRaw Platform. Built as a Smart City Sustainability Prototype.</p>
+    </footer>
 
+    <script>
+        // Global Boot Initialization
+        window.addEventListener('load', () => {
+
+
+            // Asynchronous Microtask Simulation to fetch LocalStorage safely without jamming UI
+            Promise.resolve().then(() => {
+                const cachedDraft = localStorage.getItem('w2r_cached_draft');
+                if (cachedDraft) {
+                    document.getElementById('draftInput').value = cachedDraft;
+                    const indicators = document.getElementById('statusLS');
+                    indicators.innerText = "Synced Active";
+                    indicators.className = "text-emerald-400";
+                }
+            });
+
+            // Asynchronous Microtask Simulation to fetch SessionStorage
+            Promise.resolve().then(() => {
+                const sessionFilter = sessionStorage.getItem('w2r_active_filter');
+                if (sessionFilter) {
+                    document.getElementById('sessionFilter').value = sessionFilter;
+                    const indicators = document.getElementById('statusSS');
+                    indicators.innerText = "Cached Latent";
+                    indicators.className = "text-teal-400";
+                }
+            });
+        });
+
+        // 1. Geolocation API — Show Nearby Locations Popup
+        function showNearbyModal(locations, coordLabel) {
+            document.getElementById('modalCoords').textContent = coordLabel;
+            const list = document.getElementById('nearbyList');
+            list.innerHTML = locations.map(loc => `
+                <div class="flex items-center gap-3 bg-slate-900 border border-slate-700 rounded-xl p-3">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center flex-shrink-0 text-lg">${loc.icon}</div>
+                    <div class="flex-grow min-w-0">
+                        <p class="text-white text-sm font-semibold">${loc.name}</p>
+                        <p class="text-slate-400 text-xs">${loc.type}</p>
+                    </div>
+                    <span class="text-emerald-400 text-xs font-bold font-mono flex-shrink-0">${loc.dist} mi</span>
+                </div>
+            `).join('');
+            document.getElementById('nearbyModal').classList.remove('hidden');
+        }
+
+        function closeNearbyModal() {
+            document.getElementById('nearbyModal').classList.add('hidden');
+        }
+
+        function fetchGeographicBounds() {
+            const btn = document.getElementById('geoBtn');
+            const btnIcon = document.getElementById('geoIcon');
+            const btnText = document.getElementById('geoText');
+            
+            // Set loading state
+            btnText.innerText = "Locating...";
+            btnIcon.innerHTML = `<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>`; 
+            btnIcon.classList.add('animate-spin');
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            btn.disabled = true;
+            
+            const restoreBtn = () => {
+                btnText.innerText = "Find Locations";
+                btnIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />`;
+                btnIcon.classList.remove('animate-spin');
+                btn.classList.remove('opacity-80', 'cursor-not-allowed');
+                btn.disabled = false;
+            };
+
+            if (!navigator.geolocation) {
+                restoreBtn();
+                alert('Geolocation is not supported by your browser.');
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    restoreBtn();
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const f = Math.abs(lat + lon) % 10;
+                    showNearbyModal([
+                        { icon: '🏭', name: 'Hyperlocal Waste Facility', type: 'Processing Plant', dist: (f + 0.3).toFixed(1) },
+                        { icon: '♻️', name: 'Recycling Processing Hub', type: 'Material Recovery', dist: (f + 1.9).toFixed(1) },
+                        { icon: '🪵', name: 'Materials Storage Yard', type: 'Raw Material Depot', dist: (f + 4.2).toFixed(1) },
+                        { icon: '🔬', name: 'BioMass Analysis Center', type: 'Organic Processing', dist: (f + 6.1).toFixed(1) },
+                    ], `${lat.toFixed(4)}° N, ${lon.toFixed(4)}° E`);
+                },
+                () => {
+                    restoreBtn();
+                    showNearbyModal([
+                        { icon: '🏭', name: 'Local Warehouse & Depot', type: 'Storage Facility', dist: '0.5' },
+                        { icon: '♻️', name: 'Production Facility', type: 'Material Recovery', dist: '2.1' },
+                        { icon: '🪵', name: 'Storage Yard', type: 'Raw Material Depot', dist: '3.8' },
+                        { icon: '🔬', name: 'Organic Processing Plant', type: 'BioMass Center', dist: '5.4' },
+                    ], 'Location access denied — showing defaults');
+                }
+            );
+        }
+
+        // 2. Asynchronous Queue Simulator for Local Storage API
+        function triggerBackgroundWrite() {
+            const textValue = document.getElementById('draftInput').value.trim();
+            if (!textValue) return;
+
+            const statusNode = document.getElementById('statusLS');
+            statusNode.innerText = "Writing Task...";
+            statusNode.className = "text-yellow-400 animate-pulse";
+
+            // Using microtask queuing execution to simulate non-blocking background threads
+            setTimeout(() => {
+                localStorage.setItem('w2r_cached_draft', textValue);
+                statusNode.innerText = "Success (Bg)";
+                statusNode.className = "text-emerald-400";
+                alert("Asynchronous Task Status:\nDraft listing parameter written to background local storage layer successfully.");
+            }, 400);
+        }
+
+        // 3. Asynchronous Queue Simulator for Session Storage API
+        function triggerBackgroundSessionCache() {
+            const selectValue = document.getElementById('sessionFilter').value;
+            const statusNode = document.getElementById('statusSS');
+            statusNode.innerText = "Caching Task...";
+            statusNode.className = "text-yellow-400 animate-pulse";
+
+            setTimeout(() => {
+                sessionStorage.setItem('w2r_active_filter', selectValue);
+                statusNode.innerText = "Cached (Bg)";
+                statusNode.className = "text-teal-400";
+                alert(`Asynchronous Task Status:\nActive session token state data ("${selectValue}") pushed to background heap memory structure.`);
+            }, 300);
+        }
+
+        // 4. File API — Insert for Analysis
+        document.getElementById('fileUpload').addEventListener('change', function () {
+            const file = this.files[0];
+            if (!file) return;
+            const previewArea = document.getElementById('filePreviewArea');
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileMeta').textContent = `${(file.size / 1024).toFixed(1)} KB · ${file.type || 'unknown type'}`;
+            previewArea.classList.remove('hidden');
+            document.getElementById('statusFile').textContent = 'Ready';
+            document.getElementById('statusFile').className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30 flex-shrink-0';
+            const statusFile = document.getElementById('statusFile');
+            statusFile.textContent = 'Ready';
+            statusFile.className = 'text-blue-400';
+        });
+
+        function processFileObject() {
+            const inputBuffer = document.getElementById('fileUpload');
+            if (inputBuffer.files.length === 0) {
+                alert("File Analysis Engine: No file inserted. Please insert a file above before running analysis.");
+                return;
+            }
+            const dataPacket = inputBuffer.files[0];
+            const statusFile = document.getElementById('statusFile');
+            statusFile.textContent = 'Analysing...';
+            statusFile.className = 'text-yellow-400';
+            setTimeout(() => {
+                statusFile.textContent = 'Complete';
+                statusFile.className = 'text-emerald-400';
+                alert(`✅ File Analysis Report\n\nFile: ${dataPacket.name}\nSize: ${(dataPacket.size / 1024).toFixed(1)} KB\nType: ${dataPacket.type || 'unknown'}\n\nAI Classification: Waste manifest queued successfully.\nEstimated match time: ~2 minutes.`);
+            }, 800);
+        }
+
+
+
+        // Clipboard Sharing Engine Node Method
+        function copySharePayload(elementId) {
+            const sourceString = document.getElementById(elementId).innerText;
+            const sharedUrlString = window.location.origin + "/marketplace/share?id=" + encodeURIComponent(sourceString);
+
+            if (!navigator.clipboard) return;
+
+            navigator.clipboard.writeText(sharedUrlString).then(() => {
+                alert(`Clipboard API Success:\nCopied custom marketplace access index link:\n${sharedUrlString}`);
+            });
+        }
+
+        // Core Transaction Handoff Call Handler
+        function executeSecureClaim(resourceName) {
+            alert(`B2B Transaction Pipeline Fired:\nMaterial allocation queue locked for: "${resourceName}".\nRouting requests scheduled through local geofenced parameters.`);
+        }
+    </script>
 </body>
+
 </html>
