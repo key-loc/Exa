@@ -2,643 +2,2145 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="WasteToRaw - AI Sustainability Marketplace for Commercial Waste">
-    <title>WasteToRaw | AI Sustainability Marketplace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    <script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
-    <style>
-        .nav-link {
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease-in-out;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WasteToRaw | AI Sustainability Marketplace</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --acid: #AAFF00;
+      --acid-dim: #88CC00;
+      --char: #0A0E0B;
+      --char2: #111811;
+      --panel: #141C14;
+      --panel2: #1C261C;
+      --muted: #6B7F6B;
+      --text: #E8F0E8;
+      --text2: #A8C0A8;
+    }
 
-        .nav-link:hover {
-            color: #059669;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .btn-emerald {
-            background-color: #059669;
-            color: #ffffff;
-            transition: all 0.2s ease-in-out;
-            font-weight: 600;
-        }
+    html {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--char);
+      color: var(--text);
+    }
 
-        .btn-emerald:hover {
-            background-color: #047857;
-        }
+    .display {
+      font-family: 'Syne', sans-serif;
+    }
 
-        .card-feature {
-            background-color: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            border: 1px solid #f1f5f9;
-            transition: all 0.3s ease-in-out;
-        }
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
 
-        .card-feature:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-            transform: translateY(-0.25rem);
-        }
+    ::-webkit-scrollbar-thumb {
+      background: #AAFF0055;
+      border-radius: 2px;
+    }
 
-        .card-title {
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.25rem;
-        }
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10, 14, 11, .85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(170, 255, 0, .1);
+    }
 
-        .card-desc {
-            color: #475569;
-            font-size: 0.875rem;
-            line-height: 1.625;
-        }
+    .nav-inner {
+      max-width: 1280px;
+      margin: auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .step-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -.02em;
+    }
 
-        .step-circle {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 9999px;
-            background-color: #059669;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 1.125rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-        }
+    .logo span {
+      color: var(--acid);
+    }
 
-        .step-title {
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.25rem;
-        }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
 
-        .step-desc {
-            color: #475569;
-            font-size: 0.75rem;
-        }
+    .nav-links a {
+      color: var(--text2);
+      font-size: .875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color .2s;
+    }
 
-        .card-product {
-            background-color: #f8fafc;
-            border-radius: 1rem;
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    .nav-links a:hover {
+      color: var(--acid);
+    }
 
-        .card-product:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
+    .cta-pill {
+      background: var(--acid);
+      color: var(--char);
+      padding: .45rem 1.25rem;
+      border-radius: 9999px;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-decoration: none;
+      transition: all .2s;
+    }
 
-        .badge-tag {
-            display: inline-block;
-            padding: 0.125rem 0.625rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background-color: #d1fae5;
-            color: #065f46;
-            margin-bottom: 0.75rem;
-        }
-    </style>
+    .cta-pill:hover {
+      background: #CCFF33;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(170, 255, 0, .3);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+      background: var(--char);
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 4rem 6rem 6rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 10%;
+      bottom: 10%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(170, 255, 0, .25), transparent);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(170, 255, 0, .08);
+      border: 1px solid rgba(170, 255, 0, .2);
+      border-radius: 9999px;
+      padding: .4rem 1rem;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--acid);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
+
+    .eyebrow-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--acid);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .3;
+        transform: scale(.6)
+      }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 4vw, 4.6rem);
+      font-weight: 800;
+      line-height: 1.01;
+      letter-spacing: -.035em;
+      margin-bottom: 1.75rem;
+    }
+
+    h1 .line-accent {
+      color: var(--acid);
+      display: block;
+    }
+
+    h1 .line-dim {
+      color: var(--text2);
+      display: block;
+      font-size: .68em;
+      font-weight: 700;
+    }
+
+    .hero-sub {
+      font-size: .975rem;
+      color: var(--text2);
+      max-width: 420px;
+      line-height: 1.8;
+      margin-bottom: 2.75rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--acid);
+      color: var(--char);
+      padding: .875rem 2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: .875rem;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-primary:hover {
+      background: #CCFF33;
+      box-shadow: 0 0 30px rgba(170, 255, 0, .35);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(170, 255, 0, .25);
+      color: var(--text2);
+      padding: .875rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: .875rem;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--acid);
+      color: var(--acid);
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(170, 255, 0, .08);
+    }
+
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .trust-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--acid);
+      line-height: 1;
+    }
+
+    .trust-label {
+      font-size: .65rem;
+      color: var(--muted);
+      margin-top: .2rem;
+      letter-spacing: .04em;
+    }
+
+    .trust-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(170, 255, 0, .12);
+    }
+
+    @media(max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left {
+        padding: 8rem 2rem 3rem;
+      }
+
+      .hero-left::after {
+        display: none;
+      }
+
+      .hero-right {
+        height: 300px;
+      }
+    }
+
+    /* ── Stat strip ── */
+    .stats-strip {
+      background: var(--panel);
+      border-top: 1px solid rgba(170, 255, 0, .08);
+      border-bottom: 1px solid rgba(170, 255, 0, .08);
+      padding: 2rem;
+    }
+
+    .stats-grid {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--acid);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: .8rem;
+      color: var(--text2);
+      margin-top: .35rem;
+      letter-spacing: .04em;
+    }
+
+    /* ── Section ── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1280px;
+      margin: auto;
+    }
+
+    .section-tag {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: .75rem;
+    }
+
+    .section-h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Features ── */
+    #features {
+      background: var(--char2);
+    }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5px;
+      background: rgba(170, 255, 0, .07);
+      border: 1px solid rgba(170, 255, 0, .07);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .feat-card {
+      background: var(--char2);
+      padding: 2.5rem 2rem;
+      transition: background .25s;
+    }
+
+    .feat-card:hover {
+      background: var(--panel);
+    }
+
+    .feat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(170, 255, 0, .1);
+      border: 1px solid rgba(170, 255, 0, .2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .feat-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      color: var(--text);
+    }
+
+    .feat-desc {
+      font-size: .875rem;
+      color: var(--text2);
+      line-height: 1.65;
+    }
+
+    /* ── AI Imagery Section ── */
+    #imagery {
+      background: var(--panel);
+    }
+
+    .img-mosaic {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 220px;
+      gap: 4px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .img-cell {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-cell:first-child {
+      grid-row: 1/3;
+    }
+
+    .img-cell svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .img-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, .8), transparent);
+      font-size: .75rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: .04em;
+    }
+
+    /* ── How It Works ── */
+    #how {
+      background: var(--char2);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--acid), transparent);
+      opacity: .3;
+    }
+
+    .step {
+      text-align: center;
+      padding: 0 1.5rem 0;
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid rgba(170, 255, 0, .3);
+      background: var(--panel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--acid);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+
+    .step-desc {
+      font-size: .82rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    /* ── Marketplace ── */
+    #market {
+      background: var(--char);
+    }
+
+    .market-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--acid);
+      letter-spacing: .06em;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #44FF44;
+      animation: pulse 1.5s infinite;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .prod-card {
+      background: var(--panel);
+      border: 1px solid rgba(170, 255, 0, .1);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all .3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prod-card:hover {
+      border-color: rgba(170, 255, 0, .35);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .4);
+    }
+
+    .prod-visual {
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prod-visual svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .prod-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(10, 14, 11, .7);
+      border: 1px solid rgba(170, 255, 0, .25);
+      border-radius: 9999px;
+      padding: .25rem .75rem;
+      font-size: .68rem;
+      font-weight: 700;
+      color: var(--acid);
+      backdrop-filter: blur(8px);
+    }
+
+    .prod-body {
+      padding: 1.25rem 1.5rem;
+      flex-grow: 1;
+    }
+
+    .prod-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+
+    .prod-meta {
+      font-size: .8rem;
+      color: var(--text2);
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+    }
+
+    .prod-foot {
+      padding: .875rem 1.5rem;
+      border-top: 1px solid rgba(170, 255, 0, .08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .prod-price {
+      font-family: 'Syne', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .prod-actions {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .btn-link {
+      background: rgba(170, 255, 0, .08);
+      border: 1px solid rgba(170, 255, 0, .15);
+      color: var(--text2);
+      padding: .4rem .75rem;
+      border-radius: 8px;
+      font-size: .72rem;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-link:hover {
+      background: rgba(170, 255, 0, .15);
+      color: var(--acid);
+    }
+
+    .btn-claim {
+      background: var(--acid);
+      color: var(--char);
+      padding: .4rem 1rem;
+      border-radius: 8px;
+      font-size: .72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      border: none;
+    }
+
+    .btn-claim:hover {
+      background: #CCFF33;
+    }
+
+    /* ── Upload ── */
+    .upload-box {
+      background: var(--panel);
+      border: 1.5px dashed rgba(170, 255, 0, .25);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: all .25s;
+      cursor: pointer;
+      max-width: 480px;
+    }
+
+    .upload-box:hover {
+      border-color: var(--acid);
+      background: rgba(170, 255, 0, .04);
+    }
+
+    .upload-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 1rem;
+      margin-bottom: .35rem;
+    }
+
+    .upload-sub {
+      font-size: .8rem;
+      color: var(--text2);
+    }
+
+    .btn-submit {
+      margin-top: 1.5rem;
+      background: var(--acid);
+      color: var(--char);
+      padding: .7rem 2rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: .875rem;
+      border: none;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-submit:hover {
+      background: #CCFF33;
+    }
+
+    /* ── Testimonials ── */
+    #testimonials {
+      background: var(--panel);
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testi-card {
+      background: var(--panel2);
+      border: 1px solid rgba(170, 255, 0, .08);
+      border-radius: 16px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .testi-quote {
+      font-size: .88rem;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(170, 255, 0, .08);
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .author-role {
+      font-size: .7rem;
+      color: var(--muted);
+    }
+
+    /* ── Geo ── */
+    .geo-card {
+      background: var(--char2);
+      border: 1px solid rgba(170, 255, 0, .1);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 400px;
+    }
+
+    .geo-btn {
+      width: 100%;
+      background: var(--acid);
+      color: var(--char);
+      border: none;
+      border-radius: 12px;
+      padding: .85rem;
+      font-weight: 700;
+      font-size: .875rem;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .geo-btn:hover {
+      background: #CCFF33;
+      box-shadow: 0 0 20px rgba(170, 255, 0, .3);
+    }
+
+    /* ── Modal ── */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, .8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-box {
+      background: var(--panel2);
+      border: 1px solid rgba(170, 255, 0, .2);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .modal-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .25rem;
+    }
+
+    .modal-sub {
+      font-size: .75rem;
+      color: var(--acid);
+      font-family: monospace;
+    }
+
+    .modal-list {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .modal-item {
+      background: var(--char);
+      border: 1px solid rgba(170, 255, 0, .1);
+      border-radius: 12px;
+      padding: .875rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .875rem;
+    }
+
+    .modal-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(170, 255, 0, .1);
+      border: 1px solid rgba(170, 255, 0, .2);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .modal-name {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .modal-type {
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    .modal-dist {
+      font-family: monospace;
+      font-size: .8rem;
+      color: var(--acid);
+      font-weight: 700;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .modal-close {
+      width: 100%;
+      margin-top: 1.25rem;
+      background: rgba(170, 255, 0, .1);
+      border: 1px solid rgba(170, 255, 0, .2);
+      color: var(--acid);
+      border-radius: 12px;
+      padding: .75rem;
+      font-weight: 700;
+      font-size: .875rem;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .modal-close:hover {
+      background: rgba(170, 255, 0, .18);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--char);
+      border-top: 1px solid rgba(170, 255, 0, .08);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .footer-logo span {
+      color: var(--acid);
+    }
+
+    .footer-copy {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: .5rem;
+    }
+
+    /* ── Responsive ── */
+    @media(max-width:768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .img-mosaic {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .img-cell:first-child {
+        grid-row: auto;
+      }
+
+      .steps::before {
+        display: none;
+      }
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
 </head>
 
-<body class="font-sans antialiased bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+<body>
 
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 relative">
-            <a href="#" class="font-extrabold text-xl tracking-tight">WasteTo<span
-                    class="text-emerald-600">Raw</span></a>
-            <nav class="hidden md:flex space-x-6 items-center"><a href="#features" class="nav-link">Features</a><a
-                    href="#how" class="nav-link">How It Works</a><a href="#demo-console"
-                    class="nav-link text-emerald-600 font-bold">App Console</a><a href="#market"
-                    class="nav-link">Marketplace</a><a href="#demo-console"
-                    class="btn-emerald px-4 py-2 rounded-lg text-sm">Launch App</a></nav>
-            <input type="checkbox" id="menu-toggle" class="hidden peer" />
-            <label for="menu-toggle" class="md:hidden p-2 text-slate-600 cursor-pointer select-none"><svg
-                    class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg></label>
-            <div
-                class="hidden peer-checked:flex md:hidden flex-col absolute top-16 left-0 right-0 bg-white border-b border-slate-100 px-4 py-4 space-y-3 shadow-md z-40">
-                <a href="#features" class="nav-link">Features</a><a href="#how" class="nav-link">How It Works</a><a
-                    href="#demo-console" class="nav-link text-emerald-600 font-bold">App Console</a><a href="#market"
-                    class="nav-link">Marketplace</a><a href="#"
-                    class="btn-emerald px-4 py-2 rounded-lg text-sm text-center">Launch App</a>
-            </div>
+  <!-- ══ NAV ══════════════════════════════════════════════════════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">WasteTo<span>Raw</span></a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#market">Marketplace</a>
+        <a href="#testimonials">Community</a>
+        <a href="#market" class="cta-pill">Launch App</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+  <div class="hero">
+
+    <!-- LEFT: editorial copy -->
+    <div class="hero-left">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> AI-Powered Circular Economy</div>
+      <h1>
+        Industrial<br>waste is
+        <span class="line-accent">just a resource</span>
+        <span class="line-dim">in the wrong place.</span>
+      </h1>
+      <p class="hero-sub">WasteToRaw connects factories, farms, and facilities to trade byproducts — cutting landfill
+        costs and closing the industrial loop with AI matching.</p>
+      <div class="hero-btns">
+        <a href="#market" class="btn-primary">Explore Marketplace</a>
+        <a href="#how" class="btn-ghost">How It Works</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-num">14.8K</span><span class="trust-label">Tonnes diverted</span>
         </div>
-    </header>
+        <div class="trust-divider"></div>
+        <div class="trust-item"><span class="trust-num">620</span><span class="trust-label">Active partners</span></div>
+        <div class="trust-divider"></div>
+        <div class="trust-item"><span class="trust-num">$2.4M</span><span class="trust-label">Disposal savings</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item"><span class="trust-num">98%</span><span class="trust-label">AI accuracy</span></div>
+      </div>
+    </div>
 
-    <main class="flex-grow">
-        <section class="relative py-20 overflow-hidden bg-slate-50">
-            <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-                <span
-                    class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold mb-4">AI-Powered
-                    Circular Economy</span>
-                <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">Turn Commercial Waste
-                    Into <span class="text-emerald-600 block sm:inline">Premium Raw Materials</span></h1>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">An AI marketplace connecting businesses to
-                    trade and recycle industrial byproducts—reducing costs and landfill waste.</p>
-                <div class="space-x-4">
-                    <a href="#market"
-                        class="btn-emerald px-8 py-3.5 rounded-lg font-bold text-base shadow-md hover:shadow-lg inline-block">Explore
-                        Marketplace</a>
-                </div>
+    <!-- RIGHT: full-bleed industrial warehouse scene -->
+    <div class="hero-right">
+      <svg viewBox="0 0 720 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hglow" cx="50%" cy="45%" r="55%">
+            <stop offset="0%" stop-color="#AAFF00" stop-opacity=".14" />
+            <stop offset="100%" stop-color="#0A0E0B" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="hglow2" cx="30%" cy="80%" r="40%">
+            <stop offset="0%" stop-color="#00FFA3" stop-opacity=".09" />
+            <stop offset="100%" stop-color="#0A0E0B" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="floorgrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1A241A" />
+            <stop offset="100%" stop-color="#0D140D" />
+          </linearGradient>
+          <linearGradient id="wallgrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#111811" />
+            <stop offset="100%" stop-color="#0A0E0B" />
+          </linearGradient>
+          <linearGradient id="ceilgrad" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#141C14" />
+            <stop offset="100%" stop-color="#0A0E0B" />
+          </linearGradient>
+          <filter id="sfog" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" />
+          </filter>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Sky / dark upper zone -->
+        <rect width="720" height="900" fill="#080C08" />
+        <rect width="720" height="900" fill="url(#hglow)" />
+        <rect width="720" height="900" fill="url(#hglow2)" />
+
+        <!-- Warehouse ceiling -->
+        <rect x="0" y="0" width="720" height="200" fill="url(#ceilgrad)" />
+
+        <!-- Ceiling structural beams -->
+        <g stroke="#AAFF00" stroke-opacity=".08" stroke-width="1.5">
+          <line x1="0" y1="60" x2="720" y2="60" />
+          <line x1="0" y1="120" x2="720" y2="120" />
+          <line x1="0" y1="180" x2="720" y2="180" />
+          <line x1="120" y1="0" x2="120" y2="200" />
+          <line x1="240" y1="0" x2="240" y2="200" />
+          <line x1="360" y1="0" x2="360" y2="200" />
+          <line x1="480" y1="0" x2="480" y2="200" />
+          <line x1="600" y1="0" x2="600" y2="200" />
+        </g>
+
+        <!-- Hanging industrial lights -->
+        <g>
+          <!-- Light 1 -->
+          <line x1="180" y1="0" x2="180" y2="165" stroke="#AAFF00" stroke-opacity=".15" stroke-width="1" />
+          <rect x="158" y="165" width="44" height="14" rx="3" fill="#1C2A1C" stroke="#AAFF00" stroke-opacity=".3"
+            stroke-width="1" />
+          <ellipse cx="180" cy="200" rx="90" ry="30" fill="#AAFF00" opacity=".04" filter="url(#sfog)" />
+          <ellipse cx="180" cy="179" rx="18" ry="5" fill="#AAFF00" opacity=".5" filter="url(#glow)" />
+          <!-- Light 2 -->
+          <line x1="360" y1="0" x2="360" y2="155" stroke="#AAFF00" stroke-opacity=".15" stroke-width="1" />
+          <rect x="338" y="155" width="44" height="14" rx="3" fill="#1C2A1C" stroke="#AAFF00" stroke-opacity=".3"
+            stroke-width="1" />
+          <ellipse cx="360" cy="190" rx="90" ry="30" fill="#AAFF00" opacity=".04" filter="url(#sfog)" />
+          <ellipse cx="360" cy="169" rx="18" ry="5" fill="#AAFF00" opacity=".5" filter="url(#glow)" />
+          <!-- Light 3 -->
+          <line x1="540" y1="0" x2="540" y2="165" stroke="#AAFF00" stroke-opacity=".15" stroke-width="1" />
+          <rect x="518" y="165" width="44" height="14" rx="3" fill="#1C2A1C" stroke="#AAFF00" stroke-opacity=".3"
+            stroke-width="1" />
+          <ellipse cx="540" cy="200" rx="90" ry="30" fill="#AAFF00" opacity=".04" filter="url(#sfog)" />
+          <ellipse cx="540" cy="179" rx="18" ry="5" fill="#AAFF00" opacity=".45" filter="url(#glow)" />
+        </g>
+
+        <!-- Floor -->
+        <rect x="0" y="680" width="720" height="220" fill="url(#floorgrad)" />
+        <!-- Floor perspective lines -->
+        <g stroke="#AAFF00" stroke-opacity=".05" stroke-width="1">
+          <line x1="360" y1="680" x2="0" y2="900" />
+          <line x1="360" y1="680" x2="180" y2="900" />
+          <line x1="360" y1="680" x2="540" y2="900" />
+          <line x1="360" y1="680" x2="720" y2="900" />
+        </g>
+        <!-- Floor paint lines -->
+        <line x1="0" y1="700" x2="720" y2="700" stroke="#AAFF00" stroke-opacity=".07" stroke-width="2"
+          stroke-dasharray="40 20" />
+
+        <!-- Back wall -->
+        <rect x="0" y="200" width="720" height="480" fill="url(#wallgrad)" />
+        <!-- Wall grid texture -->
+        <g stroke="#AAFF00" stroke-opacity=".03" stroke-width=".5">
+          <line x1="0" y1="250" x2="720" y2="250" />
+          <line x1="0" y1="300" x2="720" y2="300" />
+          <line x1="0" y1="350" x2="720" y2="350" />
+          <line x1="0" y1="400" x2="720" y2="400" />
+          <line x1="0" y1="450" x2="720" y2="450" />
+          <line x1="0" y1="500" x2="720" y2="500" />
+          <line x1="0" y1="550" x2="720" y2="550" />
+          <line x1="0" y1="600" x2="720" y2="600" />
+          <line x1="0" y1="650" x2="720" y2="650" />
+          <line x1="90" y1="200" x2="90" y2="680" />
+          <line x1="180" y1="200" x2="180" y2="680" />
+          <line x1="270" y1="200" x2="270" y2="680" />
+          <line x1="360" y1="200" x2="360" y2="680" />
+          <line x1="450" y1="200" x2="450" y2="680" />
+          <line x1="540" y1="200" x2="540" y2="680" />
+          <line x1="630" y1="200" x2="630" y2="680" />
+        </g>
+
+        <!-- Left shelf rack structure -->
+        <g transform="translate(20, 230)">
+          <!-- Rack uprights -->
+          <rect x="0" y="0" width="8" height="440" fill="#1A2A1A" stroke="#AAFF00" stroke-opacity=".2"
+            stroke-width=".5" />
+          <rect x="145" y="0" width="8" height="440" fill="#1A2A1A" stroke="#AAFF00" stroke-opacity=".2"
+            stroke-width=".5" />
+          <!-- Shelf levels -->
+          <rect x="0" y="0" width="153" height="10" rx="1" fill="#243A24" stroke="#AAFF00" stroke-opacity=".25"
+            stroke-width=".5" />
+          <rect x="0" y="110" width="153" height="8" rx="1" fill="#243A24" stroke="#AAFF00" stroke-opacity=".2"
+            stroke-width=".5" />
+          <rect x="0" y="220" width="153" height="8" rx="1" fill="#243A24" stroke="#AAFF00" stroke-opacity=".18"
+            stroke-width=".5" />
+          <rect x="0" y="330" width="153" height="8" rx="1" fill="#243A24" stroke="#AAFF00" stroke-opacity=".15"
+            stroke-width=".5" />
+          <!-- Barrel / drum top shelf -->
+          <g transform="translate(10, 15)">
+            <ellipse cx="28" cy="8" rx="28" ry="8" fill="#2A1A0A" stroke="#AAFF00" stroke-opacity=".3"
+              stroke-width="1" />
+            <rect x="0" y="8" width="56" height="80" fill="#331E0A" stroke="#AAFF00" stroke-opacity=".25"
+              stroke-width=".5" />
+            <ellipse cx="28" cy="88" rx="28" ry="8" fill="#2A1A0A" stroke="#AAFF00" stroke-opacity=".15"
+              stroke-width=".5" />
+            <text x="28" y="52" text-anchor="middle" font-size="7" fill="#AAFF00" opacity=".4"
+              font-family="Space Grotesk" font-weight="600">ORGANIC</text>
+          </g>
+          <g transform="translate(78, 15)">
+            <ellipse cx="24" cy="7" rx="24" ry="7" fill="#1A2A1A" stroke="#AAFF00" stroke-opacity=".3"
+              stroke-width="1" />
+            <rect x="0" y="7" width="48" height="72" fill="#1E301E" stroke="#AAFF00" stroke-opacity=".2"
+              stroke-width=".5" />
+            <ellipse cx="24" cy="79" rx="24" ry="7" fill="#1A2A1A" stroke="#AAFF00" stroke-opacity=".12"
+              stroke-width=".5" />
+          </g>
+          <!-- Boxes second shelf -->
+          <g transform="translate(8, 122)">
+            <rect x="0" y="0" width="52" height="44" rx="3" fill="#1E3020" stroke="#AAFF00" stroke-opacity=".25"
+              stroke-width=".5" />
+            <rect x="58" y="0" width="52" height="44" rx="3" fill="#243828" stroke="#AAFF00" stroke-opacity=".2"
+              stroke-width=".5" />
+            <text x="26" y="26" text-anchor="middle" font-size="7" fill="#AAFF00" opacity=".35"
+              font-family="Space Grotesk">W2R</text>
+            <text x="84" y="26" text-anchor="middle" font-size="7" fill="#AAFF00" opacity=".3"
+              font-family="Space Grotesk">W2R</text>
+          </g>
+          <!-- Bags third shelf -->
+          <g transform="translate(10, 232)">
+            <ellipse cx="30" cy="56" rx="28" ry="38" fill="#2A2010" stroke="#AAFF00" stroke-opacity=".2"
+              stroke-width=".5" />
+            <ellipse cx="82" cy="56" rx="26" ry="34" fill="#28241A" stroke="#AAFF00" stroke-opacity=".15"
+              stroke-width=".5" />
+            <!-- Tie top -->
+            <line x1="30" y1="18" x2="30" y2="8" stroke="#AAFF00" stroke-opacity=".3" stroke-width="1.5" />
+            <line x1="82" y1="22" x2="82" y2="12" stroke="#AAFF00" stroke-opacity=".25" stroke-width="1.5" />
+          </g>
+        </g>
+
+        <!-- Right shelf rack structure -->
+        <g transform="translate(548, 240)">
+          <rect x="0" y="0" width="8" height="420" fill="#1A2A1A" stroke="#AAFF00" stroke-opacity=".2"
+            stroke-width=".5" />
+          <rect x="147" y="0" width="8" height="420" fill="#1A2A1A" stroke="#AAFF00" stroke-opacity=".2"
+            stroke-width=".5" />
+          <rect x="0" y="0" width="155" height="10" rx="1" fill="#243A24" stroke="#AAFF00" stroke-opacity=".25"
+            stroke-width=".5" />
+          <rect x="0" y="105" width="155" height="8" rx="1" fill="#243A24" stroke="#AAFF00" stroke-opacity=".2"
+            stroke-width=".5" />
+          <rect x="0" y="210" width="155" height="8" rx="1" fill="#243A24" stroke="#AAFF00" stroke-opacity=".18"
+            stroke-width=".5" />
+          <rect x="0" y="315" width="155" height="8" rx="1" fill="#243A24" stroke="#AAFF00" stroke-opacity=".15"
+            stroke-width=".5" />
+          <!-- Denim rolls top shelf -->
+          <g transform="translate(8, 16)">
+            <ellipse cx="30" cy="30" rx="12" ry="30" fill="#1F3055" stroke="#AAFF00" stroke-opacity=".2"
+              stroke-width=".5" transform="rotate(-5, 30, 30)" />
+            <ellipse cx="62" cy="30" rx="10" ry="28" fill="#243868" stroke="#AAFF00" stroke-opacity=".18"
+              stroke-width=".5" />
+            <ellipse cx="90" cy="30" rx="11" ry="29" fill="#1F3055" stroke="#AAFF00" stroke-opacity=".2"
+              stroke-width=".5" />
+            <ellipse cx="120" cy="30" rx="12" ry="30" fill="#284070" stroke="#AAFF00" stroke-opacity=".15"
+              stroke-width=".5" />
+          </g>
+          <!-- Timber planks second shelf -->
+          <g transform="translate(6, 116)">
+            <rect x="0" y="0" width="142" height="12" rx="2" fill="#5C4B2A" stroke="#AAFF00" stroke-opacity=".2"
+              stroke-width=".5" />
+            <rect x="0" y="14" width="142" height="10" rx="2" fill="#6B5930" stroke="#AAFF00" stroke-opacity=".15"
+              stroke-width=".5" />
+            <rect x="0" y="26" width="142" height="10" rx="2" fill="#7A6838" stroke="#AAFF00" stroke-opacity=".12"
+              stroke-width=".5" />
+            <rect x="0" y="38" width="142" height="10" rx="2" fill="#5C4B2A" stroke="#AAFF00" stroke-opacity=".1"
+              stroke-width=".5" />
+            <rect x="0" y="50" width="142" height="10" rx="2" fill="#6B5930" stroke="#AAFF00" stroke-opacity=".1"
+              stroke-width=".5" />
+            <rect x="0" y="62" width="142" height="10" rx="2" fill="#4A3820" stroke="#AAFF00" stroke-opacity=".08"
+              stroke-width=".5" />
+          </g>
+          <!-- Plastic bales third shelf -->
+          <g transform="translate(8, 222)">
+            <rect x="0" y="0" width="65" height="55" rx="5" fill="#0E2030" stroke="#AAFF00" stroke-opacity=".18"
+              stroke-width=".5" />
+            <rect x="72" y="0" width="68" height="55" rx="5" fill="#0E1E2C" stroke="#AAFF00" stroke-opacity=".15"
+              stroke-width=".5" />
+            <!-- Bale straps -->
+            <line x1="0" y1="18" x2="65" y2="18" stroke="#AAFF00" stroke-opacity=".2" stroke-width="1.5" />
+            <line x1="0" y1="36" x2="65" y2="36" stroke="#AAFF00" stroke-opacity=".2" stroke-width="1.5" />
+            <line x1="72" y1="18" x2="140" y2="18" stroke="#AAFF00" stroke-opacity=".18" stroke-width="1.5" />
+            <line x1="72" y1="36" x2="140" y2="36" stroke="#AAFF00" stroke-opacity=".18" stroke-width="1.5" />
+          </g>
+        </g>
+
+        <!-- Center pallet stack on floor -->
+        <g transform="translate(200, 530)">
+          <!-- Bottom pallet -->
+          <rect x="0" y="96" width="318" height="18" rx="3" fill="#3D3020" stroke="#AAFF00" stroke-opacity=".2"
+            stroke-width=".5" />
+          <rect x="20" y="114" width="30" height="32" rx="2" fill="#2C2215" />
+          <rect x="144" y="114" width="30" height="32" rx="2" fill="#2C2215" />
+          <rect x="268" y="114" width="30" height="32" rx="2" fill="#2C2215" />
+          <!-- Stack of coffee bags on pallet -->
+          <rect x="20" y="52" width="278" height="44" rx="4" fill="#4A3010" stroke="#AAFF00" stroke-opacity=".15"
+            stroke-width=".5" />
+          <rect x="36" y="16" width="246" height="40" rx="4" fill="#5A3C14" stroke="#AAFF00" stroke-opacity=".13"
+            stroke-width=".5" />
+          <rect x="54" y="-10" width="210" height="32" rx="4" fill="#4A3010" stroke="#AAFF00" stroke-opacity=".1"
+            stroke-width=".5" />
+          <!-- Label on bags -->
+          <text x="159" y="80" text-anchor="middle" font-size="10" fill="#AAFF00" opacity=".45" font-family="Syne"
+            font-weight="700">ORGANIC</text>
+          <text x="159" y="93" text-anchor="middle" font-size="8" fill="#AAFF00" opacity=".3"
+            font-family="Space Grotesk">SPENT GROUNDS · 500 LBS</text>
+          <!-- Wrap lines on bags -->
+          <line x1="20" y1="74" x2="298" y2="74" stroke="#AAFF00" stroke-opacity=".08" stroke-width="1" />
+          <line x1="36" y1="40" x2="282" y2="40" stroke="#AAFF00" stroke-opacity=".07" stroke-width="1" />
+        </g>
+
+        <!-- Forklift silhouette (far right, bg) -->
+        <g transform="translate(580, 560)" opacity=".18">
+          <!-- Mast -->
+          <rect x="60" y="-160" width="10" height="180" fill="#AAFF00" />
+          <rect x="75" y="-160" width="8" height="180" fill="#AAFF00" />
+          <!-- Forks -->
+          <rect x="62" y="20" width="80" height="8" rx="1" fill="#AAFF00" />
+          <rect x="62" y="32" width="80" height="8" rx="1" fill="#AAFF00" />
+          <!-- Body -->
+          <rect x="0" y="0" width="90" height="55" rx="4" fill="#AAFF00" />
+          <!-- Wheel -->
+          <circle cx="15" cy="60" r="14" fill="#AAFF00" />
+          <circle cx="75" cy="60" r="12" fill="#AAFF00" />
+          <!-- Cab -->
+          <rect x="5" y="-30" width="50" height="35" rx="3" fill="#AAFF00" />
+        </g>
+
+        <!-- Ambient dust / atmosphere particles -->
+        <g fill="#AAFF00" opacity=".18">
+          <circle cx="290" cy="220" r="1.5" />
+          <circle cx="430" cy="190" r="1" />
+          <circle cx="500" cy="310" r="1.5" />
+          <circle cx="220" cy="370" r="1" />
+          <circle cx="380" cy="440" r="1.5" />
+          <circle cx="460" cy="280" r="1" />
+          <circle cx="310" cy="500" r="1" />
+          <circle cx="160" cy="460" r="1.5" />
+        </g>
+
+        <!-- AI scan overlay: green analysis box on center pallet -->
+        <g transform="translate(195, 488)" opacity=".6">
+          <!-- Corner brackets of a scan UI -->
+          <path d="M0,0 L0,18 M0,0 L18,0" stroke="#AAFF00" stroke-width="2" fill="none" stroke-linecap="round" />
+          <path d="M330,0 L312,0 M330,0 L330,18" stroke="#AAFF00" stroke-width="2" fill="none" stroke-linecap="round" />
+          <path d="M0,178 L0,160 M0,178 L18,178" stroke="#AAFF00" stroke-width="2" fill="none" stroke-linecap="round" />
+          <path d="M330,178 L312,178 M330,178 L330,160" stroke="#AAFF00" stroke-width="2" fill="none"
+            stroke-linecap="round" />
+          <!-- Scan label -->
+          <rect x="8" y="8" width="110" height="18" rx="3" fill="rgba(170,255,0,.12)" />
+          <text x="14" y="21" font-size="8" fill="#AAFF00" font-family="Space Grotesk" font-weight="600">AI CLASSIFIED ·
+            ORGANIC</text>
+          <!-- Scan line sweep -->
+          <line x1="0" y1="90" x2="330" y2="90" stroke="#AAFF00" stroke-opacity=".3" stroke-width="1"
+            stroke-dasharray="8 6" />
+        </g>
+
+        <!-- Bottom acid green ground glow -->
+        <ellipse cx="360" cy="850" rx="300" ry="60" fill="#AAFF00" opacity=".04" filter="url(#sfog)" />
+      </svg>
+    </div>
+
+  </div>
+
+
+
+  <!-- ══ AI IMAGERY MOSAIC ══════════════════════════════════════════════════ -->
+  <section id="imagery">
+    <div class="section-inner">
+      <div style="margin-bottom:3rem" class="reveal">
+        <div class="section-tag">Visual Identity</div>
+        <h2 class="section-h2">The raw materials <br>economy, reimagined</h2>
+      </div>
+      <div class="img-mosaic reveal">
+        <!-- Cell 1: Large — Industrial circular flow -->
+        <div class="img-cell">
+          <svg viewBox="0 0 420 500" xmlns="http://www.w3.org/2000/svg" style="background:#0E1A0E">
+            <defs>
+              <radialGradient id="ig1" cx="50%" cy="50%" r="55%">
+                <stop offset="0%" stop-color="#AAFF00" stop-opacity=".22" />
+                <stop offset="100%" stop-color="#0E1A0E" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <rect width="420" height="500" fill="#0A130A" />
+            <rect width="420" height="500" fill="url(#ig1)" />
+            <!-- Circular flow diagram -->
+            <circle cx="210" cy="250" r="110" fill="none" stroke="#AAFF00" stroke-opacity=".12" stroke-width="80" />
+            <circle cx="210" cy="250" r="130" fill="none" stroke="#AAFF00" stroke-opacity=".06" stroke-width="2"
+              stroke-dasharray="8 6" />
+            <!-- Nodes on circle -->
+            <g>
+              <!-- Top: Factory -->
+              <circle cx="210" cy="130" r="28" fill="#1A2E1A" stroke="#AAFF00" stroke-opacity=".5" stroke-width="1.5" />
+              <rect x="196" y="148" width="28" height="18" rx="2" fill="#AAFF00" opacity=".6" />
+              <rect x="200" y="142" width="8" height="10" rx="1" fill="#AAFF00" opacity=".4" />
+              <rect x="212" y="138" width="6" height="14" rx="1" fill="#AAFF00" opacity=".3" />
+              <text x="210" y="122" text-anchor="middle" font-size="9" fill="#AAFF00" opacity=".6"
+                font-family="Space Grotesk">FACTORY</text>
+              <!-- Right: Recycler -->
+              <circle cx="330" cy="250" r="26" fill="#1A2E1A" stroke="#00FFA3" stroke-opacity=".4" stroke-width="1.5" />
+              <path d="M322,250 Q326,238 330,250 Q334,262 338,250" stroke="#00FFA3" stroke-opacity=".7" stroke-width="2"
+                fill="none" />
+              <text x="354" y="254" font-size="8" fill="#00FFA3" opacity=".6" font-family="Space Grotesk">RECYCLE</text>
+              <!-- Bottom: Market -->
+              <circle cx="210" cy="370" r="26" fill="#1A2E1A" stroke="#AAFF00" stroke-opacity=".4" stroke-width="1.5" />
+              <rect x="198" y="362" width="24" height="16" rx="2" fill="#AAFF00" opacity=".5" />
+              <path d="M200,362 L210,352 L220,362" fill="none" stroke="#AAFF00" stroke-opacity=".5"
+                stroke-width="1.5" />
+              <text x="210" y="390" text-anchor="middle" font-size="9" fill="#AAFF00" opacity=".6"
+                font-family="Space Grotesk">MARKET</text>
+              <!-- Left: Logistics -->
+              <circle cx="90" cy="250" r="26" fill="#1A2E1A" stroke="#AAFF00" stroke-opacity=".3" stroke-width="1.5" />
+              <path d="M78,254 L82,254 L82,248 L92,248 L95,244 L102,244 L102,254 L99,254" stroke="#AAFF00"
+                stroke-opacity=".6" stroke-width="1.5" fill="none" />
+              <text x="62" y="240" font-size="8" fill="#AAFF00" opacity=".5" font-family="Space Grotesk">HAUL</text>
+            </g>
+            <!-- Center text -->
+            <text x="210" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="#AAFF00"
+              font-family="Syne">ZERO</text>
+            <text x="210" y="262" text-anchor="middle" font-size="11" font-weight="700" fill="#AAFF00"
+              font-family="Syne">WASTE</text>
+            <!-- Flow arrows on path -->
+            <circle cx="270" cy="153" r="3" fill="#AAFF00" opacity=".5" />
+            <circle cx="310" cy="310" r="3" fill="#00FFA3" opacity=".4" />
+            <circle cx="140" cy="355" r="3" fill="#AAFF00" opacity=".4" />
+            <circle cx="106" cy="195" r="3" fill="#AAFF00" opacity=".3" />
+          </svg>
+          <div class="img-label">Closed-loop industrial symbiosis</div>
+        </div>
+        <!-- Cell 2: top-right — Coffee grounds / organic -->
+        <div class="img-cell">
+          <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="background:#120F08">
+            <defs>
+              <radialGradient id="ig2" cx="40%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#AA7700" stop-opacity=".4" />
+                <stop offset="100%" stop-color="#120F08" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <rect width="280" height="280" fill="#120F08" />
+            <rect width="280" height="280" fill="url(#ig2)" />
+            <!-- Pile of grounds — organic texture -->
+            <ellipse cx="140" cy="180" rx="90" ry="32" fill="#3B2210" />
+            <ellipse cx="140" cy="170" rx="78" ry="26" fill="#4A2C14" />
+            <ellipse cx="140" cy="162" rx="65" ry="22" fill="#5C3418" />
+            <ellipse cx="140" cy="156" rx="50" ry="16" fill="#6B3C1C" />
+            <!-- Dots (grounds texture) -->
+            <g fill="#8B5520" opacity=".6">
+              <circle cx="108" cy="165" r="3" />
+              <circle cx="124" cy="158" r="2.5" />
+              <circle cx="140" cy="162" r="3" />
+              <circle cx="155" cy="157" r="2.5" />
+              <circle cx="168" cy="164" r="3" />
+              <circle cx="132" cy="172" r="2" />
+              <circle cx="148" cy="170" r="2.5" />
+              <circle cx="120" cy="175" r="2" />
+            </g>
+            <!-- Steam lines -->
+            <path d="M120,145 Q114,130 120,115" stroke="#AAFF00" stroke-opacity=".35" stroke-width="1.5" fill="none"
+              stroke-linecap="round" />
+            <path d="M140,140 Q134,124 140,108" stroke="#AAFF00" stroke-opacity=".3" stroke-width="1.5" fill="none"
+              stroke-linecap="round" />
+            <path d="M160,144 Q154,128 160,112" stroke="#AAFF00" stroke-opacity=".25" stroke-width="1.5" fill="none"
+              stroke-linecap="round" />
+            <!-- Label -->
+            <text x="140" y="55" text-anchor="middle" font-size="13" font-weight="700" fill="#AAFF00" font-family="Syne"
+              opacity=".9">SPENT</text>
+            <text x="140" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#AAFF00" font-family="Syne"
+              opacity=".9">COFFEE</text>
+            <text x="140" y="85" text-anchor="middle" font-size="8" fill="#AA7700" font-family="Space Grotesk"
+              opacity=".7">→ BIOGAS FEEDSTOCK</text>
+          </svg>
+          <div class="img-label">Organic byproducts → Biogas</div>
+        </div>
+        <!-- Cell 3: bottom-right — Denim scraps -->
+        <div class="img-cell">
+          <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg" style="background:#080E18">
+            <defs>
+              <radialGradient id="ig3" cx="60%" cy="40%" r="55%">
+                <stop offset="0%" stop-color="#2244AA" stop-opacity=".3" />
+                <stop offset="100%" stop-color="#080E18" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <rect width="280" height="220" fill="#080E18" />
+            <rect width="280" height="220" fill="url(#ig3)" />
+            <!-- Stacked fabric layers -->
+            <rect x="30" y="130" width="220" height="28" rx="4" fill="#1A2A4A" />
+            <rect x="40" y="118" width="200" height="26" rx="4" fill="#1F3055" />
+            <rect x="50" y="106" width="180" height="26" rx="4" fill="#243868" />
+            <rect x="60" y="95" width="160" height="26" rx="4" fill="#284070" />
+            <!-- Fabric texture: stitching lines -->
+            <g stroke="#4466AA" stroke-opacity=".3" stroke-width=".5">
+              <line x1="80" y1="95" x2="80" y2="155" />
+              <line x1="120" y1="95" x2="120" y2="155" />
+              <line x1="160" y1="95" x2="160" y2="155" />
+              <line x1="200" y1="95" x2="200" y2="155" />
+            </g>
+            <!-- Scatter denim scraps -->
+            <rect x="22" y="75" width="45" height="30" rx="3" fill="#1F3055" transform="rotate(-15,44,90)" />
+            <rect x="195" y="68" width="50" height="25" rx="3" fill="#243868" transform="rotate(12,220,80)" />
+            <rect x="100" y="60" width="40" height="22" rx="3" fill="#284070" transform="rotate(-5,120,71)" />
+            <!-- Tag label -->
+            <text x="140" y="45" text-anchor="middle" font-size="12" font-weight="700" fill="#AAFF00" font-family="Syne"
+              opacity=".9">DENIM SCRAPS</text>
+            <text x="140" y="58" text-anchor="middle" font-size="8" fill="#6699DD" font-family="Space Grotesk"
+              opacity=".7">→ INSULATION FIBER</text>
+          </svg>
+          <div class="img-label">Textile scraps → Insulation material</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURES ══════════════════════════════════════════════════════════ -->
+  <section id="features">
+    <div class="section-inner">
+      <div style="text-align:center;margin-bottom:3.5rem" class="reveal">
+        <div class="section-tag">Platform Capabilities</div>
+        <h2 class="section-h2">Built for serious industrial recycling</h2>
+      </div>
+      <div class="feat-grid reveal">
+        <div class="feat-card">
+          <div class="feat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="12" cy="10" r="3" />
+              <path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+            </svg>
+          </div>
+          <div class="feat-title">AI Vision Classification</div>
+          <p class="feat-desc">Upload a photo of any byproduct — our computer vision model identifies material type,
+            purity grade, and potential secondary uses in under 3 seconds.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div class="feat-title">Industrial Symbiosis Matching</div>
+          <p class="feat-desc">Machine learning scans 620+ partners to find the most viable cross-industry link — coffee
+            grounds to biogas, denim to insulation, timber to chipboard.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <div class="feat-title">Geofenced Proximity Maps</div>
+          <p class="feat-desc">Proximity filtering surfaces only partners within your logistics radius — keeping haul
+            distances short and carbon costs lower.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#AAFF00" stroke-width="1.5">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <div class="feat-title">Live ESG Dashboards</div>
+          <p class="feat-desc">Real-time carbon offset tracking, waste diversion metrics, and one-click compliance
+            certificates for your sustainability reporting team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HOW IT WORKS ═══════════════════════════════════════════════════════ -->
+  <section id="how">
+    <div class="section-inner">
+      <div style="text-align:center;margin-bottom:4rem" class="reveal">
+        <div class="section-tag">Process</div>
+        <h2 class="section-h2">From byproduct to asset in four steps</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-title">Snap & List</div>
+          <p class="step-desc">Upload a photo or manifest. AI classifies material grade and suggests categories
+            instantly.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-title">AI Match</div>
+          <p class="step-desc">Symbiosis engine pairs your byproduct with the best-fit nearby facility or buyer.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-title">Secure Exchange</div>
+          <p class="step-desc">Geofenced logistics, verified pickup scheduling, and escrow-backed B2B transaction.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-title">Claim ESG Credits</div>
+          <p class="step-desc">Download verified offset certificates and compliance reports in 30 seconds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MARKETPLACE ════════════════════════════════════════════════════════ -->
+  <section id="market">
+    <div class="section-inner">
+      <div class="market-top reveal">
+        <div>
+          <div class="section-tag">Marketplace</div>
+          <h2 class="section-h2" style="margin-bottom:0">Live Feed</h2>
+        </div>
+        <div class="live-badge"><span class="live-dot"></span> 47 active listings</div>
+      </div>
+
+      <!-- Live search/filter (keyup event) -->
+      <div class="reveal" style="margin-bottom:1.5rem">
+        <input type="text" id="listingSearch" placeholder="Search listings by name… (e.g. coffee, denim, pallet)"
+          style="width:100%;max-width:480px;background:var(--panel);border:1px solid rgba(170,255,0,.15);border-radius:10px;padding:.7rem 1rem;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:.875rem;outline:none">
+        <p id="searchStatus" style="font-size:.75rem;color:var(--text2);margin-top:.4rem"></p>
+      </div>
+
+      <!-- Add Product upload -->
+      <div style="margin-bottom:3rem" class="reveal">
+        <form id="productForm" novalidate>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;max-width:480px">
+            <div style="flex:1;min-width:200px">
+              <input type="text" id="materialName" name="materialName" required minlength="3"
+                placeholder="Material name (required)"
+                style="width:100%;background:var(--panel);border:1px solid rgba(170,255,0,.15);border-radius:10px;padding:.7rem 1rem;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:.875rem;outline:none">
+              <p class="field-error" id="materialNameError"
+                style="display:none;color:#FF6B6B;font-size:.7rem;margin-top:.3rem"></p>
             </div>
-            <div
-                class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0,transparent_60%)] pointer-events-none">
+            <div style="flex:1;min-width:200px">
+              <input type="number" id="materialQty" name="materialQty" required min="1"
+                placeholder="Quantity available (lbs)"
+                style="width:100%;background:var(--panel);border:1px solid rgba(170,255,0,.15);border-radius:10px;padding:.7rem 1rem;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:.875rem;outline:none">
+              <p class="field-error" id="materialQtyError"
+                style="display:none;color:#FF6B6B;font-size:.7rem;margin-top:.3rem"></p>
             </div>
-        </section>
+          </div>
 
-        <section id="demo-console" class="py-16 bg-slate-900 text-slate-100 border-b border-slate-800">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Nearby Locations Modal -->
-                <div id="nearbyModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4"
-                    role="dialog" aria-modal="true">
-                    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeNearbyModal()"></div>
-                    <div
-                        class="relative bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl w-full max-w-md p-6 space-y-4 animate-[fadeIn_0.2s_ease]">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h3 class="text-white font-bold text-lg">📍 Nearby Locations</h3>
-                                <p id="modalCoords" class="text-emerald-400 text-xs font-mono mt-0.5">Fetching
-                                    coordinates...</p>
-                            </div>
-                            <button onclick="closeNearbyModal()"
-                                class="text-slate-500 hover:text-white transition-colors text-xl leading-none">&times;</button>
-                        </div>
-                        <div id="nearbyList" class="space-y-3"></div>
-                        <button onclick="closeNearbyModal()"
-                            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-sm font-bold transition-all">Close</button>
-                    </div>
-                </div>
+          <div class="upload-box" id="uploadBox" onclick="document.getElementById('fileUpload').click()">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="margin:auto">
+              <rect width="40" height="40" rx="10" fill="rgba(170,255,0,.1)" />
+              <path d="M20 12v16M12 20h16" stroke="#AAFF00" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <div class="upload-title">List a byproduct</div>
+            <p class="upload-sub">Upload a manifest, image, or spec sheet — AI classifies it automatically, or drag &
+              drop a file here.</p>
+            <input type="file" id="fileUpload" style="display:none">
+          </div>
+          <p class="field-error" id="fileError" style="display:none;color:#FF6B6B;font-size:.7rem;margin-top:.5rem">
+          </p>
 
-                <!-- Hidden inputs for background storage (not shown to user) -->
-                <input type="text" id="draftInput" class="hidden" value="">
-                <select id="sessionFilter" class="hidden">
-                    <option value="All Materials">All Materials</option>
-                    <option value="Organic High Bio-mass">Organic High Bio-mass</option>
-                    <option value="Commercial Polymers">Commercial Polymers</option>
-                    <option value="Industrial Raw Timber">Industrial Raw Timber</option>
-                </select>
+          <button class="btn-submit" type="submit">Submit Product</button>
+          <div id="filePreviewArea"
+            style="display:none;margin-top:1rem;background:var(--panel);border:1px solid rgba(170,255,0,.15);border-radius:12px;padding:1rem;max-width:480px">
+            <p id="fileName" style="font-size:.875rem;font-weight:600;color:var(--text)"></p>
+            <p id="fileMeta" style="font-size:.75rem;color:var(--text2)"></p>
+          </div>
+        </form>
+      </div>
 
-                <div class="flex justify-center mt-2 mb-8">
-                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 w-full max-w-sm flex flex-col gap-2">
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center">📍 Places Near Me!</p>
-                        <button id="geoBtn" onclick="fetchGeographicBounds()"
-                            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl font-bold text-sm shadow-md transition-all transform active:scale-[0.99] flex items-center justify-center gap-2">
-                            <svg id="geoIcon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            <span id="geoText">Find Locations</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Word from Our Users — Video API Testimonial -->
-                <div class="mt-10">
-                    <div class="text-center mb-6">
-                        <span class="text-emerald-400 text-xs font-bold tracking-widest uppercase">From Our
-                            Community</span>
-                        <h3 class="text-xl font-black text-white mt-1">A Word From Our Users</h3>
-                        <p class="text-slate-500 text-xs mt-1 max-w-md mx-auto">See how WasteToRaw is transforming
-                            industrial operations across sectors.</p>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <div
-                                class="bg-slate-800 rounded-2xl border border-slate-700/60 p-5 flex flex-col justify-between">
-                                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">"Finally a platform that
-                                    treats industrial byproduct as an asset, not a liability. Our coffee grounds now go
-                                    directly to local biogas producers."</p>
-                                <div class="flex items-center gap-2 pt-3 border-t border-slate-700">
-                                    <div
-                                        class="w-7 h-7 rounded-full bg-teal-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                                        ML</div>
-                                    <div>
-                                        <p class="text-white text-xs font-semibold">Maria L.</p>
-                                        <p class="text-slate-500 text-[10px]">Head of Sustainability, BrewCo</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-slate-800 rounded-2xl border border-slate-700/60 p-5 flex flex-col justify-between">
-                                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">"The geofenced matching is
-                                    a game changer. We matched with a facility 2 miles away for our denim scraps — same
-                                    day pickup."</p>
-                                <div class="flex items-center gap-2 pt-3 border-t border-slate-700">
-                                    <div
-                                        class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                                        JT</div>
-                                    <div>
-                                        <p class="text-white text-xs font-semibold">James T.</p>
-                                        <p class="text-slate-500 text-[10px]">Logistics Manager, DenimWorks</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-slate-800 rounded-2xl border border-slate-700/60 p-5 flex flex-col justify-between">
-                                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">"ESG reporting used to
-                                    take a week. Now I pull a compliance certificate in 30 seconds. This is the future
-                                    of circular supply chains."</p>
-                                <div class="flex items-center gap-2 pt-3 border-t border-slate-700">
-                                    <div
-                                        class="w-7 h-7 rounded-full bg-violet-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                                        AP</div>
-                                    <div>
-                                        <p class="text-white text-xs font-semibold">Anya P.</p>
-                                        <p class="text-slate-500 text-[10px]">ESG Director, GreenPack Industries</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-slate-800 rounded-2xl border border-slate-700/60 p-5 flex flex-col justify-between">
-                                <p class="text-slate-300 text-sm leading-relaxed italic mb-4">"We listed 300 untreated
-                                    pallets on a Friday. By Monday they were claimed and hauled. Zero landfill. Zero
-                                    cost. Pure circular economy."</p>
-                                <div class="flex items-center gap-2 pt-3 border-t border-slate-700">
-                                    <div
-                                        class="w-7 h-7 rounded-full bg-amber-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                                        DS</div>
-                                    <div>
-                                        <p class="text-white text-xs font-semibold">Derek S.</p>
-                                        <p class="text-slate-500 text-[10px]">Yard Supervisor, TimberFirst</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="cards-grid reveal">
+        <!-- Card 1 -->
+        <div class="prod-card" data-name="spent coffee grounds">
+          <div class="prod-visual">
+            <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" style="background:#120F08">
+              <defs>
+                <radialGradient id="cg1" cx="50%" cy="60%" r="60%">
+                  <stop offset="0%" stop-color="#AA7700" stop-opacity=".3" />
+                  <stop offset="100%" stop-color="#120F08" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <rect width="360" height="180" fill="#120F08" />
+              <rect width="360" height="180" fill="url(#cg1)" />
+              <ellipse cx="180" cy="135" rx="120" ry="30" fill="#3B2210" />
+              <ellipse cx="180" cy="126" rx="100" ry="24" fill="#4A2C14" />
+              <ellipse cx="180" cy="118" rx="82" ry="20" fill="#5C3418" />
+              <g fill="#8B5520" opacity=".7">
+                <circle cx="148" cy="120" r="3.5" />
+                <circle cx="165" cy="113" r="3" />
+                <circle cx="183" cy="118" r="3.5" />
+                <circle cx="200" cy="112" r="3" />
+                <circle cx="215" cy="118" r="3.5" />
+                <circle cx="170" cy="126" r="2.5" />
+                <circle cx="192" cy="123" r="3" />
+                <circle cx="158" cy="129" r="2.5" />
+              </g>
+              <path d="M155,108 Q149,90 155,74" stroke="#AAFF00" stroke-opacity=".4" stroke-width="1.5" fill="none"
+                stroke-linecap="round" />
+              <path d="M180,104 Q174,86 180,70" stroke="#AAFF00" stroke-opacity=".35" stroke-width="1.5" fill="none"
+                stroke-linecap="round" />
+              <path d="M205,108 Q199,90 205,74" stroke="#AAFF00" stroke-opacity=".3" stroke-width="1.5" fill="none"
+                stroke-linecap="round" />
+              <text x="180" y="40" text-anchor="middle" font-size="22" font-weight="800" fill="#AAFF00"
+                font-family="Syne" opacity=".8">COFFEE</text>
+              <text x="180" y="58" text-anchor="middle" font-size="9" fill="#AA7700" font-family="Space Grotesk"
+                opacity=".7" letter-spacing="3">GROUNDS</text>
+            </svg>
+            <div class="prod-badge">Organic</div>
+          </div>
+          <div class="prod-body">
+            <div class="prod-name" id="title-item-1">Spent Coffee Grounds</div>
+            <div class="prod-meta">
+              <span>⚖️ 500 lbs available</span>
+              <span>📍 Portland, OR · 3.2 mi</span>
             </div>
-        </section>
-
-        <section id="features" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="card-feature"><span class="text-3xl mb-4 block">📸</span>
-                        <h3 class="card-title">AI Classification</h3>
-                        <p class="card-desc">Computer vision categorizes waste via simple photos.</p>
-                    </div>
-                    <div class="card-feature"><span class="text-3xl mb-4 block">🔗</span>
-                        <h3 class="card-title">Symbiosis Match</h3>
-                        <p class="card-desc">Machine learning maps cross-industry links instantly.</p>
-                    </div>
-                    <div class="card-feature"><span class="text-3xl mb-4 block">📍</span>
-                        <h3 class="card-title">Geofenced Maps</h3>
-                        <p class="card-desc">Proximity filtering keeps hauling distances low.</p>
-                    </div>
-                    <div class="card-feature"><span class="text-3xl mb-4 block">📊</span>
-                        <h3 class="card-title">ESG Dashboards</h3>
-                        <p class="card-desc">Track carbon offsets and waste diversion metrics.</p>
-                    </div>
-                </div>
+          </div>
+          <div class="prod-foot">
+            <span class="prod-price">Free / Pickup</span>
+            <div class="prod-actions">
+              <button class="btn-link" onclick="copySharePayload('title-item-1')">📋 Link</button>
+              <button class="btn-claim" onclick="executeSecureClaim('Spent Coffee Grounds')">Claim</button>
             </div>
-        </section>
+          </div>
+        </div>
 
-        <section id="how" class="py-20 bg-slate-50 border-y border-slate-200/60">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 text-center mb-12">How It Works</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="step-item">
-                        <div class="step-circle">1</div>
-                        <h3 class="step-title">Snap & List</h3>
-                        <p class="step-desc">Upload images of surplus byproducts.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-circle">2</div>
-                        <h3 class="step-title">AI Match</h3>
-                        <p class="step-desc">Auto-pair materials with local factories.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-circle">3</div>
-                        <h3 class="step-title">Secure Exchange</h3>
-                        <p class="step-desc">Arrange geofenced logistics and pickup.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-circle">4</div>
-                        <h3 class="step-title">Claim ESG</h3>
-                        <p class="step-desc">Download compliance & offset certificates.</p>
-                    </div>
-                </div>
+        <!-- Card 2 -->
+        <div class="prod-card" data-name="denim scraps">
+          <div class="prod-visual">
+            <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" style="background:#080E18">
+              <defs>
+                <radialGradient id="cg2" cx="50%" cy="40%" r="55%">
+                  <stop offset="0%" stop-color="#2244AA" stop-opacity=".35" />
+                  <stop offset="100%" stop-color="#080E18" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <rect width="360" height="180" fill="#080E18" />
+              <rect width="360" height="180" fill="url(#cg2)" />
+              <rect x="40" y="105" width="280" height="22" rx="3" fill="#1A2A4A" />
+              <rect x="55" y="90" width="250" height="20" rx="3" fill="#1F3055" />
+              <rect x="70" y="75" width="220" height="20" rx="3" fill="#243868" />
+              <rect x="85" y="62" width="190" height="20" rx="3" fill="#284070" />
+              <g stroke="#4466AA" stroke-opacity=".25" stroke-width=".5">
+                <line x1="110" y1="62" x2="110" y2="127" />
+                <line x1="160" y1="62" x2="160" y2="127" />
+                <line x1="200" y1="62" x2="200" y2="127" />
+                <line x1="250" y1="62" x2="250" y2="127" />
+              </g>
+              <rect x="32" y="50" width="55" height="28" rx="3" fill="#1F3055" transform="rotate(-14,59,64)" />
+              <rect x="250" y="44" width="60" height="24" rx="3" fill="#243868" transform="rotate(10,280,56)" />
+              <text x="180" y="36" text-anchor="middle" font-size="22" font-weight="800" fill="#AAFF00"
+                font-family="Syne" opacity=".85">DENIM</text>
+              <text x="180" y="52" text-anchor="middle" font-size="9" fill="#6699DD" font-family="Space Grotesk"
+                opacity=".7" letter-spacing="3">SCRAPS · 1.2T</text>
+            </svg>
+            <div class="prod-badge">Textiles</div>
+          </div>
+          <div class="prod-body">
+            <div class="prod-name" id="title-item-2">Denim Scraps</div>
+            <div class="prod-meta">
+              <span>⚖️ 1.2 Tons available</span>
+              <span>📍 Seattle, WA · 12.4 mi</span>
             </div>
-        </section>
-
-        <section id="market" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b pb-4 gap-4">
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Live Marketplace Feed</h2>
-                </div>
-                
-                <!-- File API Insert (Add Product) -->
-                <div class="mb-10 bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm max-w-xl">
-                    <h3 class="text-lg font-bold text-slate-800 mb-4">Add Product</h3>
-                    <label for="fileUpload"
-                        class="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-xl p-6 cursor-pointer transition-all group bg-white hover:bg-emerald-50">
-                        <svg class="w-8 h-8 text-slate-400 group-hover:text-emerald-500 transition-colors"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <p class="text-sm font-semibold text-slate-500 group-hover:text-emerald-600 transition-colors">
-                            Upload manifest or image</p>
-                        <input type="file" id="fileUpload" class="hidden">
-                    </label>
-                    <div id="filePreviewArea"
-                        class="hidden mt-3 bg-white border border-slate-200 rounded-xl px-4 py-3 items-center gap-3">
-                        <div class="flex-grow min-w-0">
-                            <p id="fileName" class="text-sm font-semibold text-slate-800 truncate"></p>
-                            <p id="fileMeta" class="text-xs text-slate-500"></p>
-                        </div>
-                        <span id="fileStatus" class="text-xs font-bold text-emerald-600 flex-shrink-0">Ready</span>
-                    </div>
-                    <button onclick="processFileObject()"
-                        class="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl font-bold text-sm tracking-wide shadow-md transition-all transform active:scale-[0.99]">Submit Product</button>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="card-product">
-                        <div class="p-6">
-                            <span class="badge-tag">Organic</span>
-                            <h3 id="title-item-1" class="font-bold text-lg text-slate-900 mb-3">Spent Coffee Grounds
-                            </h3>
-                            <div class="text-sm text-slate-600 space-y-1">
-                                <div><strong>Qty:</strong> 500 lbs</div>
-                                <div id="loc-item-1"><strong>Loc:</strong> Portland, OR (3.2 mi)</div>
-                            </div>
-                        </div>
-                        <div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
-                            <span class="font-extrabold text-slate-900 text-sm">Free / Pickup</span>
-                            <div class="flex gap-1.5">
-                                <button onclick="copySharePayload('title-item-1')"
-                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 p-2 rounded-lg text-xs font-medium transition-colors"
-                                    title="Copy Resource ID Link">📋 Link</button>
-                                <button onclick="executeSecureClaim('Spent Coffee Grounds')"
-                                    class="btn-emerald px-4 py-1.5 rounded-lg text-xs text-center font-bold">Claim</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-product">
-                        <div class="p-6">
-                            <span class="badge-tag">Textiles</span>
-                            <h3 id="title-item-2" class="font-bold text-lg text-slate-900 mb-3">Denim Scraps</h3>
-                            <div class="text-sm text-slate-600 space-y-1">
-                                <div><strong>Qty:</strong> 1.2 Tons</div>
-                                <div id="loc-item-2"><strong>Loc:</strong> Seattle, WA (12.4 mi)</div>
-                            </div>
-                        </div>
-                        <div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
-                            <span class="font-extrabold text-slate-900 text-sm">$50 / Ton</span>
-                            <div class="flex gap-1.5">
-                                <button onclick="copySharePayload('title-item-2')"
-                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 p-2 rounded-lg text-xs font-medium transition-colors"
-                                    title="Copy Resource ID Link">📋 Link</button>
-                                <button onclick="executeSecureClaim('Denim Scraps')"
-                                    class="btn-emerald px-4 py-1.5 rounded-lg text-xs text-center font-bold">Claim</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-product">
-                        <div class="p-6">
-                            <span class="badge-tag">Wood</span>
-                            <h3 id="title-item-3" class="font-bold text-lg text-slate-900 mb-3">Untreated Pallet Wood
-                            </h3>
-                            <div class="text-sm text-slate-600 space-y-1">
-                                <div><strong>Qty:</strong> 300 Pallets</div>
-                                <div id="loc-item-3"><strong>Loc:</strong> Beaverton, OR (8.1 mi)</div>
-                            </div>
-                        </div>
-                        <div class="px-6 py-4 bg-white border-t border-slate-200 flex items-center justify-between">
-                            <span class="font-extrabold text-slate-900 text-sm">$2 / Unit</span>
-                            <div class="flex gap-1.5">
-                                <button onclick="copySharePayload('title-item-3')"
-                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 p-2 rounded-lg text-xs font-medium transition-colors"
-                                    title="Copy Resource ID Link">📋 Link</button>
-                                <button onclick="executeSecureClaim('Untreated Pallet Wood')"
-                                    class="btn-emerald px-4 py-1.5 rounded-lg text-xs text-center font-bold">Claim</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="prod-foot">
+            <span class="prod-price">$50 / Ton</span>
+            <div class="prod-actions">
+              <button class="btn-link" onclick="copySharePayload('title-item-2')">📋 Link</button>
+              <button class="btn-claim" onclick="executeSecureClaim('Denim Scraps')">Claim</button>
             </div>
-        </section>
+          </div>
+        </div>
 
-        <section class="py-16 bg-slate-50 border-t border-slate-100">
-            <div class="max-w-3xl mx-auto px-4">
-                <article class="prose prose-slate prose-emerald mx-auto text-center">
-                    <h2>Committed to the Circular Economy</h2>
-                    <p>At WasteToRaw, we believe that industrial waste is just a resource in the wrong place. By
-                        leveraging machine learning, we streamline matches to create sustainable closed-loop industrial
-                        ecosystems.</p>
-                </article>
+        <!-- Card 3 -->
+        <div class="prod-card" data-name="untreated pallet wood">
+          <div class="prod-visual">
+            <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" style="background:#0C0F08">
+              <defs>
+                <radialGradient id="cg3" cx="50%" cy="55%" r="55%">
+                  <stop offset="0%" stop-color="#5C4B2A" stop-opacity=".5" />
+                  <stop offset="100%" stop-color="#0C0F08" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <rect width="360" height="180" fill="#0C0F08" />
+              <rect width="360" height="180" fill="url(#cg3)" />
+              <!-- Stacked pallets -->
+              <g transform="translate(40,80)">
+                <rect x="0" y="44" width="280" height="14" rx="2" fill="#4A3820" stroke="#AAFF00" stroke-opacity=".2"
+                  stroke-width=".5" />
+                <rect x="0" y="30" width="280" height="12" rx="2" fill="#5C4B2A" stroke="#AAFF00" stroke-opacity=".15"
+                  stroke-width=".5" />
+                <rect x="0" y="17" width="280" height="11" rx="2" fill="#6B5930" stroke="#AAFF00" stroke-opacity=".12"
+                  stroke-width=".5" />
+                <rect x="0" y="6" width="280" height="10" rx="2" fill="#7A6838" stroke="#AAFF00" stroke-opacity=".1"
+                  stroke-width=".5" />
+                <!-- Legs -->
+                <rect x="10" y="58" width="20" height="24" rx="2" fill="#3D3020" />
+                <rect x="130" y="58" width="20" height="24" rx="2" fill="#3D3020" />
+                <rect x="250" y="58" width="20" height="24" rx="2" fill="#3D3020" />
+              </g>
+              <text x="180" y="40" text-anchor="middle" font-size="20" font-weight="800" fill="#AAFF00"
+                font-family="Syne" opacity=".85">PALLET WOOD</text>
+              <text x="180" y="56" text-anchor="middle" font-size="9" fill="#AA8833" font-family="Space Grotesk"
+                opacity=".7" letter-spacing="3">UNTREATED · 300 UNITS</text>
+            </svg>
+            <div class="prod-badge">Wood</div>
+          </div>
+          <div class="prod-body">
+            <div class="prod-name" id="title-item-3">Untreated Pallet Wood</div>
+            <div class="prod-meta">
+              <span>⚖️ 300 pallets</span>
+              <span>📍 Beaverton, OR · 8.1 mi</span>
             </div>
-        </section>
-    </main>
+          </div>
+          <div class="prod-foot">
+            <span class="prod-price">$2 / Unit</span>
+            <div class="prod-actions">
+              <button class="btn-link" onclick="copySharePayload('title-item-3')">📋 Link</button>
+              <button class="btn-claim" onclick="executeSecureClaim('Untreated Pallet Wood')">Claim</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-sm">
-        <p>© 2026 WasteToRaw Platform. Built as a Smart City Sustainability Prototype.</p>
-    </footer>
+  <!-- ══ NEARBY ══════════════════════════════════════════════════════════════ -->
+  <section id="geo" style="background:var(--panel);padding:5rem 2rem">
+    <div class="section-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center" class="reveal">
+        <div>
+          <div class="section-tag">Geofenced Matching</div>
+          <h2 class="section-h2">Find partners within your logistics radius</h2>
+          <p style="color:var(--text2);font-size:.9rem;line-height:1.7;margin:1.25rem 0 2rem">Allow location access and
+            the platform surfaces verified facilities, recyclers, and depots within your defined haul distance —
+            reducing transport emissions from day one.</p>
+          <div class="geo-card">
+            <p
+              style="font-size:.7rem;font-weight:600;color:var(--text2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem">
+              📍 Places Near Me</p>
+            <button id="geoBtn" class="geo-btn" onclick="fetchGeographicBounds()">
+              <svg id="geoIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span id="geoText">Find Locations Near Me</span>
+            </button>
+          </div>
+        </div>
+        <!-- Mini map graphic -->
+        <div>
+          <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg"
+            style="width:100%;border-radius:20px;background:#0A130A">
+            <defs>
+              <radialGradient id="mapglow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#AAFF00" stop-opacity=".08" />
+                <stop offset="100%" stop-color="#0A130A" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <rect width="420" height="340" fill="#0A130A" />
+            <rect width="420" height="340" fill="url(#mapglow)" />
+            <!-- Grid -->
+            <g stroke="#AAFF00" stroke-opacity=".05" stroke-width=".5">
+              <line x1="0" y1="85" x2="420" y2="85" />
+              <line x1="0" y1="170" x2="420" y2="170" />
+              <line x1="0" y1="255" x2="420" y2="255" />
+              <line x1="105" y1="0" x2="105" y2="340" />
+              <line x1="210" y1="0" x2="210" y2="340" />
+              <line x1="315" y1="0" x2="315" y2="340" />
+            </g>
+            <!-- Radius rings from center -->
+            <circle cx="210" cy="170" r="60" fill="none" stroke="#AAFF00" stroke-opacity=".12" stroke-width="1"
+              stroke-dasharray="4 4" />
+            <circle cx="210" cy="170" r="120" fill="none" stroke="#AAFF00" stroke-opacity=".07" stroke-width="1"
+              stroke-dasharray="6 6" />
+            <!-- Center: You -->
+            <circle cx="210" cy="170" r="8" fill="rgba(170,255,0,.25)" stroke="#AAFF00" stroke-width="1.5" />
+            <circle cx="210" cy="170" r="4" fill="#AAFF00" />
+            <text x="222" y="168" font-size="9" fill="#AAFF00" font-family="Space Grotesk" font-weight="600">YOU</text>
+            <!-- Partner dots -->
+            <circle cx="270" cy="128" r="6" fill="#1A2E1A" stroke="#AAFF00" stroke-opacity=".5" stroke-width="1.5" />
+            <line x1="210" y1="170" x2="270" y2="128" stroke="#AAFF00" stroke-opacity=".2" stroke-width="1"
+              stroke-dasharray="3 3" />
+            <text x="280" y="122" font-size="8" fill="#AAFF00" opacity=".7" font-family="Space Grotesk">Recycler · 3.2
+              mi</text>
+            <circle cx="155" cy="115" r="5" fill="#1A2E1A" stroke="#00FFA3" stroke-opacity=".4" stroke-width="1.5" />
+            <line x1="210" y1="170" x2="155" y2="115" stroke="#00FFA3" stroke-opacity=".15" stroke-width="1"
+              stroke-dasharray="3 3" />
+            <text x="92" y="108" font-size="8" fill="#00FFA3" opacity=".6" font-family="Space Grotesk">Depot · 5.1
+              mi</text>
+            <circle cx="310" cy="215" r="5" fill="#1A2E1A" stroke="#AAFF00" stroke-opacity=".35" stroke-width="1.5" />
+            <line x1="210" y1="170" x2="310" y2="215" stroke="#AAFF00" stroke-opacity=".15" stroke-width="1"
+              stroke-dasharray="3 3" />
+            <text x="318" y="220" font-size="8" fill="#AAFF00" opacity=".6" font-family="Space Grotesk">BioMass · 6.4
+              mi</text>
+            <circle cx="168" cy="235" r="5" fill="#1A2E1A" stroke="#AAFF00" stroke-opacity=".3" stroke-width="1.5" />
+            <line x1="210" y1="170" x2="168" y2="235" stroke="#AAFF00" stroke-opacity=".15" stroke-width="1"
+              stroke-dasharray="3 3" />
+            <text x="90" y="240" font-size="8" fill="#AAFF00" opacity=".6" font-family="Space Grotesk">Timber · 8.1
+              mi</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Global Boot Initialization
-        window.addEventListener('load', () => {
+  <!-- ══ TESTIMONIALS ═══════════════════════════════════════════════════════ -->
+  <section id="testimonials">
+    <div class="section-inner">
+      <div style="text-align:center;margin-bottom:3rem" class="reveal">
+        <div class="section-tag">Community</div>
+        <h2 class="section-h2">What the circular economy looks like in practice</h2>
+      </div>
+      <div class="testi-grid reveal">
+        <div class="testi-card">
+          <p class="testi-quote">"Finally a platform that treats industrial byproduct as an asset, not a liability. Our
+            coffee grounds now go directly to local biogas producers."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:rgba(0,255,163,.15);color:#00FFA3">ML</div>
+            <div>
+              <div class="author-name">Maria L.</div>
+              <div class="author-role">Head of Sustainability, BrewCo</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">"The geofenced matching is a game changer. We matched with a facility 2 miles away for
+            our denim scraps — same day pickup."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:rgba(34,100,255,.15);color:#4488FF">JT</div>
+            <div>
+              <div class="author-name">James T.</div>
+              <div class="author-role">Logistics Manager, DenimWorks</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">"ESG reporting used to take a week. Now I pull a compliance certificate in 30 seconds.
+            This is the future of circular supply chains."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:rgba(170,100,255,.15);color:#BB88FF">AP</div>
+            <div>
+              <div class="author-name">Anya P.</div>
+              <div class="author-role">ESG Director, GreenPack Industries</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">"We listed 300 untreated pallets on a Friday. By Monday they were claimed and hauled.
+            Zero landfill. Zero cost. Pure circular economy."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:rgba(255,160,50,.15);color:#FFAA44">DS</div>
+            <div>
+              <div class="author-name">Derek S.</div>
+              <div class="author-role">Yard Supervisor, TimberFirst</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ══ FOOTER ══════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-logo">WasteTo<span>Raw</span></div>
+    <p class="footer-copy">© 2026 WasteToRaw Platform · AI Circular Economy Prototype · Built for a sustainable
+      industrial future</p>
+  </footer>
 
-            // Asynchronous Microtask Simulation to fetch LocalStorage safely without jamming UI
-            Promise.resolve().then(() => {
-                const cachedDraft = localStorage.getItem('w2r_cached_draft');
-                if (cachedDraft) {
-                    document.getElementById('draftInput').value = cachedDraft;
-                    const indicators = document.getElementById('statusLS');
-                    indicators.innerText = "Synced Active";
-                    indicators.className = "text-emerald-400";
-                }
-            });
+  <!-- ══ NEARBY MODAL ═══════════════════════════════════════════════════════ -->
+  <div id="nearbyModal"
+    style="display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:1rem">
+    <div class="modal-box">
+      <div class="modal-title">📍 Nearby Locations</div>
+      <div id="modalCoords" class="modal-sub">Fetching coordinates...</div>
+      <div id="nearbyList" class="modal-list"></div>
+      <button class="modal-close" onclick="closeNearbyModal()">Close</button>
+    </div>
+  </div>
 
-            // Asynchronous Microtask Simulation to fetch SessionStorage
-            Promise.resolve().then(() => {
-                const sessionFilter = sessionStorage.getItem('w2r_active_filter');
-                if (sessionFilter) {
-                    document.getElementById('sessionFilter').value = sessionFilter;
-                    const indicators = document.getElementById('statusSS');
-                    indicators.innerText = "Cached Latent";
-                    indicators.className = "text-teal-400";
-                }
-            });
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Geo
+    function showNearbyModal(locations, coordLabel) {
+      document.getElementById('modalCoords').textContent = coordLabel;
+      const list = document.getElementById('nearbyList');
+      list.innerHTML = locations.map(loc => `
+    <div class="modal-item">
+      <div class="modal-icon">${loc.icon}</div>
+      <div><div class="modal-name">${loc.name}</div><div class="modal-type">${loc.type}</div></div>
+      <span class="modal-dist">${loc.dist} mi</span>
+    </div>
+  `).join('');
+      const m = document.getElementById('nearbyModal');
+      m.style.display = 'flex';
+    }
+    function closeNearbyModal() {
+      document.getElementById('nearbyModal').style.display = 'none';
+    }
+    function fetchGeographicBounds() {
+      const btn = document.getElementById('geoBtn');
+      const txt = document.getElementById('geoText');
+      txt.textContent = 'Locating...';
+      btn.disabled = true; btn.style.opacity = '.7';
+      const restore = () => { txt.textContent = 'Find Locations Near Me'; btn.disabled = false; btn.style.opacity = '1'; };
+      if (!navigator.geolocation) { restore(); alert('Geolocation not supported.'); return; }
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          restore();
+          const lat = pos.coords.latitude, lon = pos.coords.longitude;
+          const f = Math.abs(lat + lon) % 10;
+          showNearbyModal([
+            { icon: '🏭', name: 'Hyperlocal Waste Facility', type: 'Processing Plant', dist: (f + 0.3).toFixed(1) },
+            { icon: '♻️', name: 'Recycling Processing Hub', type: 'Material Recovery', dist: (f + 1.9).toFixed(1) },
+            { icon: '🪵', name: 'Materials Storage Yard', type: 'Raw Material Depot', dist: (f + 4.2).toFixed(1) },
+            { icon: '🔬', name: 'BioMass Analysis Center', type: 'Organic Processing', dist: (f + 6.1).toFixed(1) },
+          ], `${lat.toFixed(4)}° N, ${lon.toFixed(4)}° E`);
+        },
+        () => {
+          restore();
+          showNearbyModal([
+            { icon: '🏭', name: 'Local Warehouse & Depot', type: 'Storage Facility', dist: '0.5' },
+            { icon: '♻️', name: 'Production Facility', type: 'Material Recovery', dist: '2.1' },
+            { icon: '🪵', name: 'Storage Yard', type: 'Raw Material Depot', dist: '3.8' },
+            { icon: '🔬', name: 'Organic Processing Plant', type: 'BioMass Center', dist: '5.4' },
+          ], 'Location access denied — showing defaults');
+        }
+      );
+    }
+
+    // File upload
+    document.getElementById('fileUpload').addEventListener('change', function () {
+      const file = this.files[0]; if (!file) return;
+      document.getElementById('fileName').textContent = file.name;
+      document.getElementById('fileMeta').textContent = `${(file.size / 1024).toFixed(1)} KB · ${file.type || 'unknown'}`;
+      document.getElementById('filePreviewArea').style.display = 'block';
+    });
+    function processFileObject() {
+      const inp = document.getElementById('fileUpload');
+      if (!inp.files.length) { alert('No file selected. Upload a manifest or image first.'); return; }
+      const f = inp.files[0];
+      setTimeout(() => {
+        alert(`✅ AI Classification Complete\n\nFile: ${f.name}\nSize: ${(f.size / 1024).toFixed(1)} KB\n\nMaterial queued for symbiosis matching.\nEstimated match time: ~2 minutes.`);
+      }, 800);
+    }
+    function copySharePayload(id) {
+      const text = document.getElementById(id).innerText;
+      const url = window.location.origin + '/marketplace/share?id=' + encodeURIComponent(text);
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => alert(`Link copied:\n${url}`));
+    }
+    function executeSecureClaim(name) {
+      alert(`Transaction queued:\n"${name}" allocation locked.\nRouting through geofenced logistics.`);
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       ADDITIONAL JS EVENT HANDLING (added for project requirements)
+       Events used below:
+         1. keyup      → live search/filter of marketplace listings
+         2. submit      → client-side form validation before "listing" a product
+         3. dragover/dragleave/drop → drag-and-drop file upload (HTML5 Drag & Drop API)
+         4. mouseover/mouseout      → hover-lift effect on product cards
+         5. dblclick    → double-click a card to instantly claim it
+         6. contextmenu → custom right-click menu on product cards
+       ════════════════════════════════════════════════════════════ */
+
+    // 1. KEYUP — live search/filter of listings
+    const listingSearch = document.getElementById('listingSearch');
+    const searchStatus = document.getElementById('searchStatus');
+    if (listingSearch) {
+      listingSearch.addEventListener('keyup', function () {
+        const query = this.value.trim().toLowerCase();
+        const cards = document.querySelectorAll('.prod-card');
+        let visibleCount = 0;
+        cards.forEach(card => {
+          const name = card.getAttribute('data-name') || '';
+          const matches = name.includes(query);
+          card.style.display = matches ? '' : 'none';
+          if (matches) visibleCount++;
         });
+        searchStatus.textContent = query
+          ? `${visibleCount} listing${visibleCount === 1 ? '' : 's'} match "${query}"`
+          : '';
+      });
+    }
 
-        // 1. Geolocation API — Show Nearby Locations Popup
-        function showNearbyModal(locations, coordLabel) {
-            document.getElementById('modalCoords').textContent = coordLabel;
-            const list = document.getElementById('nearbyList');
-            list.innerHTML = locations.map(loc => `
-                <div class="flex items-center gap-3 bg-slate-900 border border-slate-700 rounded-xl p-3">
-                    <div class="w-9 h-9 rounded-lg bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center flex-shrink-0 text-lg">${loc.icon}</div>
-                    <div class="flex-grow min-w-0">
-                        <p class="text-white text-sm font-semibold">${loc.name}</p>
-                        <p class="text-slate-400 text-xs">${loc.type}</p>
-                    </div>
-                    <span class="text-emerald-400 text-xs font-bold font-mono flex-shrink-0">${loc.dist} mi</span>
-                </div>
-            `).join('');
-            document.getElementById('nearbyModal').classList.remove('hidden');
+    // 3. DRAGOVER / DRAGLEAVE / DROP — drag a file onto the upload box
+    const uploadBox = document.getElementById('uploadBox');
+    const fileUploadInput = document.getElementById('fileUpload');
+    if (uploadBox) {
+      uploadBox.addEventListener('dragover', function (e) {
+        e.preventDefault(); // required to allow a drop
+        uploadBox.style.borderColor = '#AAFF00';
+        uploadBox.style.background = 'rgba(170,255,0,.06)';
+      });
+      uploadBox.addEventListener('dragleave', function () {
+        uploadBox.style.borderColor = '';
+        uploadBox.style.background = '';
+      });
+      uploadBox.addEventListener('drop', function (e) {
+        e.preventDefault();
+        uploadBox.style.borderColor = '';
+        uploadBox.style.background = '';
+        const files = e.dataTransfer.files;
+        if (files.length) {
+          fileUploadInput.files = files; // sync the dropped file into the real input
+          fileUploadInput.dispatchEvent(new Event('change')); // reuse existing change handler
+        }
+      });
+    }
+
+    // 2. SUBMIT — client-side validation for the "List a byproduct" form
+    const productForm = document.getElementById('productForm');
+    if (productForm) {
+      productForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let valid = true;
+
+        const nameInput = document.getElementById('materialName');
+        const nameError = document.getElementById('materialNameError');
+        if (!nameInput.value.trim() || nameInput.value.trim().length < 3) {
+          nameError.textContent = 'Please enter a material name (at least 3 characters).';
+          nameError.style.display = 'block';
+          valid = false;
+        } else {
+          nameError.style.display = 'none';
         }
 
-        function closeNearbyModal() {
-            document.getElementById('nearbyModal').classList.add('hidden');
+        const qtyInput = document.getElementById('materialQty');
+        const qtyError = document.getElementById('materialQtyError');
+        if (!qtyInput.value || Number(qtyInput.value) <= 0) {
+          qtyError.textContent = 'Please enter a quantity greater than 0.';
+          qtyError.style.display = 'block';
+          valid = false;
+        } else {
+          qtyError.style.display = 'none';
         }
 
-        function fetchGeographicBounds() {
-            const btn = document.getElementById('geoBtn');
-            const btnIcon = document.getElementById('geoIcon');
-            const btnText = document.getElementById('geoText');
-            
-            // Set loading state
-            btnText.innerText = "Locating...";
-            btnIcon.innerHTML = `<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>`; 
-            btnIcon.classList.add('animate-spin');
-            btn.classList.add('opacity-80', 'cursor-not-allowed');
-            btn.disabled = true;
-            
-            const restoreBtn = () => {
-                btnText.innerText = "Find Locations";
-                btnIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />`;
-                btnIcon.classList.remove('animate-spin');
-                btn.classList.remove('opacity-80', 'cursor-not-allowed');
-                btn.disabled = false;
-            };
-
-            if (!navigator.geolocation) {
-                restoreBtn();
-                alert('Geolocation is not supported by your browser.');
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    restoreBtn();
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    const f = Math.abs(lat + lon) % 10;
-                    showNearbyModal([
-                        { icon: '🏭', name: 'Hyperlocal Waste Facility', type: 'Processing Plant', dist: (f + 0.3).toFixed(1) },
-                        { icon: '♻️', name: 'Recycling Processing Hub', type: 'Material Recovery', dist: (f + 1.9).toFixed(1) },
-                        { icon: '🪵', name: 'Materials Storage Yard', type: 'Raw Material Depot', dist: (f + 4.2).toFixed(1) },
-                        { icon: '🔬', name: 'BioMass Analysis Center', type: 'Organic Processing', dist: (f + 6.1).toFixed(1) },
-                    ], `${lat.toFixed(4)}° N, ${lon.toFixed(4)}° E`);
-                },
-                () => {
-                    restoreBtn();
-                    showNearbyModal([
-                        { icon: '🏭', name: 'Local Warehouse & Depot', type: 'Storage Facility', dist: '0.5' },
-                        { icon: '♻️', name: 'Production Facility', type: 'Material Recovery', dist: '2.1' },
-                        { icon: '🪵', name: 'Storage Yard', type: 'Raw Material Depot', dist: '3.8' },
-                        { icon: '🔬', name: 'Organic Processing Plant', type: 'BioMass Center', dist: '5.4' },
-                    ], 'Location access denied — showing defaults');
-                }
-            );
+        const fileError = document.getElementById('fileError');
+        if (!fileUploadInput.files.length) {
+          fileError.textContent = 'Please attach or drag in a manifest, image, or spec sheet.';
+          fileError.style.display = 'block';
+          valid = false;
+        } else {
+          fileError.style.display = 'none';
         }
 
-        // 2. Asynchronous Queue Simulator for Local Storage API
-        function triggerBackgroundWrite() {
-            const textValue = document.getElementById('draftInput').value.trim();
-            if (!textValue) return;
+        if (!valid) return; // stop here — let the user fix the highlighted fields
 
-            const statusNode = document.getElementById('statusLS');
-            statusNode.innerText = "Writing Task...";
-            statusNode.className = "text-yellow-400 animate-pulse";
+        processFileObject(); // existing AI classification flow
+      });
+    }
 
-            // Using microtask queuing execution to simulate non-blocking background threads
-            setTimeout(() => {
-                localStorage.setItem('w2r_cached_draft', textValue);
-                statusNode.innerText = "Success (Bg)";
-                statusNode.className = "text-emerald-400";
-                alert("Asynchronous Task Status:\nDraft listing parameter written to background local storage layer successfully.");
-            }, 400);
-        }
-
-        // 3. Asynchronous Queue Simulator for Session Storage API
-        function triggerBackgroundSessionCache() {
-            const selectValue = document.getElementById('sessionFilter').value;
-            const statusNode = document.getElementById('statusSS');
-            statusNode.innerText = "Caching Task...";
-            statusNode.className = "text-yellow-400 animate-pulse";
-
-            setTimeout(() => {
-                sessionStorage.setItem('w2r_active_filter', selectValue);
-                statusNode.innerText = "Cached (Bg)";
-                statusNode.className = "text-teal-400";
-                alert(`Asynchronous Task Status:\nActive session token state data ("${selectValue}") pushed to background heap memory structure.`);
-            }, 300);
-        }
-
-        // 4. File API — Insert for Analysis
-        document.getElementById('fileUpload').addEventListener('change', function () {
-            const file = this.files[0];
-            if (!file) return;
-            const previewArea = document.getElementById('filePreviewArea');
-            document.getElementById('fileName').textContent = file.name;
-            document.getElementById('fileMeta').textContent = `${(file.size / 1024).toFixed(1)} KB · ${file.type || 'unknown type'}`;
-            previewArea.classList.remove('hidden');
-            document.getElementById('statusFile').textContent = 'Ready';
-            document.getElementById('statusFile').className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30 flex-shrink-0';
-            const statusFile = document.getElementById('statusFile');
-            statusFile.textContent = 'Ready';
-            statusFile.className = 'text-blue-400';
-        });
-
-        function processFileObject() {
-            const inputBuffer = document.getElementById('fileUpload');
-            if (inputBuffer.files.length === 0) {
-                alert("File Analysis Engine: No file inserted. Please insert a file above before running analysis.");
-                return;
-            }
-            const dataPacket = inputBuffer.files[0];
-            const statusFile = document.getElementById('statusFile');
-            statusFile.textContent = 'Analysing...';
-            statusFile.className = 'text-yellow-400';
-            setTimeout(() => {
-                statusFile.textContent = 'Complete';
-                statusFile.className = 'text-emerald-400';
-                alert(`✅ File Analysis Report\n\nFile: ${dataPacket.name}\nSize: ${(dataPacket.size / 1024).toFixed(1)} KB\nType: ${dataPacket.type || 'unknown'}\n\nAI Classification: Waste manifest queued successfully.\nEstimated match time: ~2 minutes.`);
-            }, 800);
-        }
-
-
-
-        // Clipboard Sharing Engine Node Method
-        function copySharePayload(elementId) {
-            const sourceString = document.getElementById(elementId).innerText;
-            const sharedUrlString = window.location.origin + "/marketplace/share?id=" + encodeURIComponent(sourceString);
-
-            if (!navigator.clipboard) return;
-
-            navigator.clipboard.writeText(sharedUrlString).then(() => {
-                alert(`Clipboard API Success:\nCopied custom marketplace access index link:\n${sharedUrlString}`);
-            });
-        }
-
-        // Core Transaction Handoff Call Handler
-        function executeSecureClaim(resourceName) {
-            alert(`B2B Transaction Pipeline Fired:\nMaterial allocation queue locked for: "${resourceName}".\nRouting requests scheduled through local geofenced parameters.`);
-        }
-    </script>
+    // 4. MOUSEOVER / MOUSEOUT — hover-lift effect on product cards
+    // 5. DBLCLICK — double-click a card to instantly claim it
+    // 6. CONTEXTMENU — custom right-click menu on product cards
+    document.querySelectorAll('.prod-card').forEach(card => {
+      card.addEventListener('mouseover', function () {
+        this.style.transform = 'translateY(-4px)';
+        this.style.transition = 'transform .2s ease';
+      });
+      card.addEventListener('mouseout', function () {
+        this.style.transform = 'translateY(0)';
+      });
+      card.addEventListener('dblclick', function () {
+        const titleEl = this.querySelector('.prod-name');
+        if (titleEl) executeSecureClaim(titleEl.textContent);
+      });
+      card.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        const titleEl = this.querySelector('.prod-name');
+        const name = titleEl ? titleEl.textContent : 'this item';
+        alert(`Quick actions for "${name}":\n• Double-click a card to claim instantly\n• Use the 📋 Link button to share`);
+      });
+    });
+  </script>
 </body>
 
 </html>
